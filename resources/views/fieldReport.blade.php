@@ -19,29 +19,38 @@
   }
   ```
 -->
-            <form class="space-y-6" action="#" method="POST">
-                <div class="bg-white px-4 py-5 shadow sm:rounded-lg  sm:p-6 ">
+            <!--call & service provider details -->
+            <div class="bg-white px-4 py-5 shadow sm:rounded-lg  sm:p-6 ">
+                <form action="/serviceProvider" method="POST">
+                    @csrf
                     <div class="md:grid md:grid-cols-2 w-full md:gap-6">
 
-                        <h3 class="text-lg font-medium leading-6 text-gray-900">Notification/SO No</h3>
+                        <h3 class="text-lg font-medium leading-6 text-gray-900">Service Order Number</h3>
                         <div class="border-0">
-                            <textarea class="w-72 border-transparent bg-gray-100" name="service-provider" id="" cols="30"
-                                rows="1"></textarea>
+                            <input class="w-72 border-transparent bg-gray-100" name="service_number" id=""
+                                value="{{ old('service_number') }}" />
                         </div>
+                        @error('service_number')
+                            <div class="text-red-500 text-xs">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="md:grid md:grid-cols-2 w-full md:gap-6">
 
                         <h3 class="  text-lg font-medium leading-6 text-gray-900">Call Date & Time
                         </h3>
                         <div>
-                            <input class="border-transparent" type="datetime-local" />
+                            <input class="border-transparent" type="datetime-local" name="order_time"
+                                value="{{ old('order_time') }}" />
                         </div>
+                        @error('order_time')
+                            <div class="text-red-500 text-xs">{{ $message }}</div>
+                        @enderror
                     </div>
-                </div>
 
-                <!--Service Provider Details  -->
-                <div class="bg-white
-                                px-4 py-5 shadow sm:rounded-lg sm:p-6">
+
+
+                    <!--Service Provider Details  -->
+
                     <div class="md:grid md:grid-cols-3 md:gap-6">
                         <div class="md:col-span-1">
                             <h3 class="text-lg font-medium leading-6 text-gray-900">Service Provider Details
@@ -53,11 +62,14 @@
                             <div class="">
                                 <!--Parameter 1:Service Provider Details -->
                                 <div class="grid grid-cols-2 items-center">
-                                    <div>Service Provider Details :</div>
+                                    <div>Service Provider Name:</div>
 
                                     <div>
-                                        <textarea class="w-72" name="service-provider" id="" cols="30" rows="1"></textarea>
+                                        <textarea class="w-72" name="service_provider" id="" cols="30" rows="1">{{ old('service_provider') }}</textarea>
                                     </div>
+                                    @error('service_provider')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <!--Parameter 2:Contract Type -->
                                 <div class="grid grid-cols-2 items-center mt-4">
@@ -65,31 +77,35 @@
 
                                     <div class="space-y-4 w-64 sm:flex sm:items-center sm:space-y-0 sm:space-x-1">
                                         <div class="flex items-center">
-                                            <input id="low" name="dust-level" type="radio" checked
+                                            <input id="low" name="contract_type" value="warranty"type="radio"
+                                                checked
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="low"
                                                 class="ml-2 block text-sm font-medium text-gray-700">Warranty</label>
                                         </div>
 
                                         <div class="flex items-center">
-                                            <input id="medium" name="dust-level" type="radio"
+                                            <input id="medium" name="contract_type" value="camc" type="radio"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="medium"
                                                 class="ml-2 block text-sm font-medium text-gray-700">CAMC</label>
                                         </div>
 
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="contract_type" value="n-camc" type="radio"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">N-CAMC</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="contract_type" value="others" type="radio"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">Others</label>
                                         </div>
+                                        @error('contract_type')
+                                            <div class="text-red-500 text-xs">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--Parameter 3:Call Type -->
@@ -99,62 +115,68 @@
                                     <div
                                         class="space-y-4 w-64 grid grid-cols-3  sm:items-center sm:space-y-0 sm:space-x-1">
                                         <div class="flex items-center">
-                                            <input id="low" name="dust-level" type="radio" checked
+                                            <input id="low" name="call_type" value="install" type="radio"
+                                                checked
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="low"
                                                 class="ml-2 block text-sm font-medium text-gray-700">Install</label>
                                         </div>
 
                                         <div class="flex items-center">
-                                            <input id="medium" name="dust-level" type="radio"
+                                            <input id="medium" name="call_type" value="dda" type="radio"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="medium"
                                                 class="ml-2 block text-sm font-medium text-gray-700">DDA</label>
                                         </div>
 
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" value="breakdown" type="radio"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">Breakdown</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" value="pm"type="radio"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">PM
                                             </label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" value="warranty-call"
+                                                type="radio"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">Warranty</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" value="camc-call"type="radio"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">CAMC</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" value="ncamc-call"type="radio"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">N-CAMC</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" value="cc" type="radio"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">CC</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" value="others-call"
+                                                type="radio"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">Others</label>
                                         </div>
+                                        @error('call_type')
+                                            <p class="text-xs text-red-500">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -163,12 +185,21 @@
 
                         </div>
                     </div>
+                    <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                        <button type="submit"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+                    </div>
+                    @foreach ($errors->all() as $error)
+                        <li class="text-red-500 text-xs">{{ $error }}</li>
+                    @endforeach
+                </form>
+            </div>
 
-                </div>
-
-                <!--Product Details  -->
-                <div class="bg-white
+            <!--Product Details  -->
+            <div class="bg-white
                                 px-4 py-5 shadow sm:rounded-lg sm:p-6">
+                <form action="/productDetails" method="POST">
+                    @csrf
                     <div class="md:grid md:grid-cols-3 md:gap-6">
                         <div class="md:col-span-1">
                             <h3 class="text-lg font-medium leading-6 text-gray-900">Product Details
@@ -182,51 +213,81 @@
                                 <div class="grid grid-cols-2 items-center">
                                     <div>Product Model:</div>
 
-                                    <div>
-                                        <textarea class="w-72" name="service-provider" id="" cols="30" rows="1"></textarea>
+                                    <div class="bg-gray-400">
+                                        <input type="text" class="w-72" name="product_model"
+                                            value="{{ old('product_model') }}" id="product_model"
+                                            placeholder="enter product name..." />
                                     </div>
+                                    @error('product_model')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="grid grid-cols-2 items-center">
                                     <div>Product Rating:</div>
 
                                     <div>
-                                        <textarea class="w-72" name="service-provider" id="" cols="30" rows="1"></textarea>
+                                        <input type="text" class="w-72" name="product_rating" id=""
+                                            value="{{ old('product_rating') }}"
+                                            placeholder="enter product rating..." />
                                     </div>
+                                    @error('product_rating')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="grid grid-cols-2 items-center">
                                     <div>Product Serial Number:</div>
 
                                     <div>
-                                        <textarea class="w-72" name="service-provider" id="" cols="30" rows="1"></textarea>
+                                        <input type="text" pattern="[a-zA-Z0-9_\-]+" class="w-72"
+                                            name="product_serial" id="product_serial"
+                                            value="{{ old('product_serial') }}" />
                                     </div>
+                                    @error('product_serial')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="grid grid-cols-2 items-center">
                                     <div>Product Part Number:</div>
 
                                     <div>
-                                        <textarea class="w-72" name="service-provider" id="" cols="30" rows="1"></textarea>
+                                        <input type="text" pattern="[a-zA-Z0-9_\-]+" class="w-72"
+                                            name="product_part" id="product_part"
+                                            value="{{ old('product_part') }}" />
                                     </div>
+                                    @error('product_part')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="grid grid-cols-2 items-center">
                                     <div>IP Address:</div>
 
                                     <div>
-                                        <textarea class="w-72" name="service-provider" id="" cols="30" rows="1"></textarea>
+                                        <input type="text" pattern="^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$"
+                                            class="w-72" name="ip_address" id="ip_address" />
                                     </div>
+                                    @error('ip_address')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="grid grid-cols-2 items-center">
                                     <div>CTD Number:</div>
 
                                     <div>
-                                        <textarea class="w-72" name="service-provider" id="" cols="30" rows="1"></textarea>
+                                        <input type="text" class="w-72" name="ctd_number" />
                                     </div>
+                                    @error('ctd_number')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="grid grid-cols-2 items-center">
                                     <div>FSB Number:</div>
 
                                     <div>
-                                        <textarea class="w-72" name="service-provider" id="" cols="30" rows="1"></textarea>
+                                        <input class="w-72" name="fsb_number" type="text" />
                                     </div>
+                                    @error('fsb_number')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <!--Parameter 2:Contract Type -->
                                 <div class="grid grid-cols-2 items-center mt-4">
@@ -234,14 +295,16 @@
 
                                     <div class="space-y-4 w-64 sm:flex sm:items-center sm:space-y-0 sm:space-x-1">
                                         <div class="flex items-center">
-                                            <input id="low" name="dust-level" type="radio" checked
+                                            <input id="low" name="product_series" type="radio" checked
+                                                value="series_ip"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="low"
                                                 class="ml-2 block text-sm font-medium text-gray-700">IP</label>
                                         </div>
 
                                         <div class="flex items-center">
-                                            <input id="medium" name="dust-level" type="radio"
+                                            <input id="medium" name="product_series" type="radio"
+                                                value="series_3p"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="medium"
                                                 class="ml-2 block text-sm font-medium text-gray-700">3P</label>
@@ -249,11 +312,15 @@
 
 
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="product_series" type="radio"
+                                                value="series_others"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">Others</label>
                                         </div>
+                                        @error('product_series')
+                                            <div class="text-red-500 text-xs">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <!--Parameter 3:Call Type -->
@@ -263,62 +330,69 @@
                                     <div
                                         class="space-y-4 w-64 grid grid-cols-3  sm:items-center sm:space-y-0 sm:space-x-1">
                                         <div class="flex items-center">
-                                            <input id="low" name="dust-level" type="radio" checked
+                                            <input id="low" name="call_type" type="radio" checked
+                                                value="call_install"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="low"
                                                 class="ml-2 block text-sm font-medium text-gray-700">Install</label>
                                         </div>
 
                                         <div class="flex items-center">
-                                            <input id="medium" name="dust-level" type="radio"
+                                            <input id="medium" name="call_type" type="radio" value="call_dda"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="medium"
                                                 class="ml-2 block text-sm font-medium text-gray-700">DDA</label>
                                         </div>
 
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" type="radio"
+                                                value="call_breakdown"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">Breakdown</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" type="radio" value="call_pm"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">PM
                                             </label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" type="radio"
+                                                value="call_warranty"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">Warranty</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" type="radio" value="call_camc"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">CAMC</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" type="radio" value="call_ncamc"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">N-CAMC</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" type="radio" value="call_cc"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">CC</label>
                                         </div>
                                         <div class="flex items-center">
-                                            <input id="high" name="dust-level" type="radio"
+                                            <input id="high" name="call_type" type="radio"
+                                                value="call_others"
                                                 class="h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                             <label for="high"
                                                 class="ml-2 block text-sm font-medium text-gray-700">Others</label>
                                         </div>
+                                        @error('call_type')
+                                            <div class="text-red-500 text-xs">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -327,12 +401,21 @@
 
                         </div>
                     </div>
+                    <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                        <button type="submit"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+                    </div>
+                    @foreach ($errors->all() as $error)
+                        <p class="text-red-500 text-xs">{{ $error }}</p>
+                    @endforeach
+                </form>
+            </div>
 
-                </div>
 
-
-                <!--Customer Information -->
-                <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
+            <!--Customer Information -->
+            <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
+                <form action="/customerDetails" method="POST">
+                    @csrf
                     <div class="md:grid md:grid-cols-3 md:gap-6">
                         <div class="md:col-span-1">
                             <h3 class="text-lg font-medium leading-6 text-gray-900">Customer Details</h3>
@@ -344,75 +427,116 @@
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="first-name" class="block text-sm font-medium text-gray-700">First
                                         name</label>
-                                    <input type="text" name="first-name" id="first-name"
-                                        autocomplete="given-name"
+                                    <input type="text" name="first_name" id="first-name"
+                                        value="{{ old('first_name') }}" autocomplete="given-name"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                    @error('first_name')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="last-name" class="block text-sm font-medium text-gray-700">Last
                                         name</label>
-                                    <input type="text" name="last-name" id="last-name" autocomplete="family-name"
-                                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                    <input type="text" name="last_name" id="last-name" autocomplete="family-name"
+                                        value="{{ old('last_name') }}"
+                                        class="mt-1
+                                        block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                                        focus:ring-indigo-500 sm:text-sm">
+                                    @error('last_name')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="email-address" class="block text-sm font-medium text-gray-700">Email
                                         address</label>
-                                    <input type="text" name="email-address" id="email-address"
-                                        autocomplete="email"
+                                    <input type="text" name="email_address" id="email-address"
+                                        value="{{ old('email_address') }}" autocomplete="email"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                    @error('email_address')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="country"
                                         class="block text-sm font-medium text-gray-700">Country</label>
                                     <select id="country" name="country" autocomplete="country-name"
-                                        class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                                        <option>India</option>
-                                        <option>SriLanka</option>
-                                        <option>Nepal</option>
-                                        <option>Bangaladesh</option>
-                                        <option>Bhutan</option>
+                                        value="{{ old('country') }}"
+                                        class="mt-1
+                                        block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm
+                                        focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                        <option value="india">India</option>
+                                        <option value="srilanka">SriLanka</option>
+                                        <option value="nepal">Nepal</option>
+                                        <option value="bangladesh">Bangaladesh</option>
+                                        <option value="bhutan">Bhutan</option>
                                     </select>
+                                    @error('country')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-6">
                                     <label for="street-address" class="block text-sm font-medium text-gray-700">Street
                                         address</label>
-                                    <input type="text" name="street-address" id="street-address"
-                                        autocomplete="street-address"
+                                    <input type="text" name="street_address" id="street-address"
+                                        value="{{ old('street_address') }}" autocomplete="street-address"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                    @error('street_address')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-6 lg:col-span-2">
                                     <label for="city" class="block text-sm font-medium text-gray-700">City</label>
-                                    <input type="text" name="city" id="city"
+                                    <input type="text" name="city" id="city" value="{{ old('city') }}"
                                         autocomplete="address-level2"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                    @error('city')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                                     <label for="region" class="block text-sm font-medium text-gray-700">State /
                                         Province</label>
-                                    <input type="text" name="region" id="region"
+                                    <input type="text" name="region" id="region" value="{{ old('region') }}"
                                         autocomplete="address-level1"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                    @error('region')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                                     <label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP /
                                         Postal code</label>
-                                    <input type="text" name="postal-code" id="postal-code"
-                                        autocomplete="postal-code"
+                                    <input type="text" name="postal_code" id="postal-code"
+                                        value="{{ old('postal_code') }}" autocomplete="postal_code"
                                         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                    @error('postal_code')
+                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--Site Information -->
-                <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
+                    <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                        <button type="submit"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+                    </div>
+                    @foreach ($errors->all() as $error)
+                        <p class="text-red-500 text-xs">{{ $error }}</p>
+                    @endforeach
+                </form>
+            </div>
+
+            <!--Site Information -->
+            <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
+                <form action="" method="POST">
+                    @csrf
                     <div class="md:grid md:grid-cols-3 md:gap-6">
                         <div class="md:col-span-1">
                             <h3 class="text-lg font-medium leading-6 text-gray-900">Site Details</h3>
@@ -721,10 +845,16 @@
                         </div>
 
                     </div>
+                </form>
+                <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                    <button type="submit"
+                        class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
                 </div>
+            </div>
 
-                <!--Installation Details -->
-                <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
+            <!--Installation Details -->
+            <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
+                <form action="">
                     <div class="md:grid md:grid-cols-3 md:gap-6">
                         <div class="md:col-span-1">
                             <h3 class="text-lg font-medium leading-6 text-gray-900">Installation Details</h3>
@@ -797,11 +927,17 @@
                         </div>
 
                     </div>
-                </div>
+                    <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                        <button type="submit"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+                    </div>
+                </form>
+            </div>
 
 
-                <!--Call Details Table -->
-                <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+            <!--Call Details Table -->
+            <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                <form action="">
                     <div class="sm:flex sm:items-center">
                         <div class="sm:flex-auto">
                             <h1 class="text-xl font-semibold text-gray-900">Call Details</h1>
@@ -918,10 +1054,16 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                    <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                        <button type="submit"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+                    </div>
+                </form>
+            </div>
 
-                <!--Customer Feedback -->
-                <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+            <!--Customer Feedback -->
+            <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                <form action="">
                     <div class="sm:flex sm:items-center">
                         <div class="sm:flex-auto">
                             <h1 class="text-xl font-semibold text-gray-900">Customer Feedback</h1>
@@ -1220,11 +1362,17 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                        <button type="submit"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+                    </div>
+                </form>
+            </div>
 
 
-                <!--Part Replacement Feedback -->
-                <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+            <!--Part Replacement Feedback -->
+            <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                <form action="">
                     <div class="sm:flex sm:items-center">
                         <div class="sm:flex-auto">
                             <h1 class="text-xl font-semibold text-gray-900">Part Replacement Details</h1>
@@ -1299,10 +1447,16 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                    <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                        <button type="submit"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+                    </div>
+                </form>
+            </div>
 
-                <!--Part Failed Feedback -->
-                <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+            <!--Part Failed Feedback -->
+            <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                <form action="">
                     <div class="sm:flex sm:items-center">
                         <div class="sm:flex-auto">
                             <h1 class="text-xl font-semibold text-gray-900">Parts Failed Details</h1>
@@ -1377,10 +1531,16 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                    <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                        <button type="submit"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+                    </div>
+                </form>
+            </div>
 
-                <!--Call SignOff  -->
-                <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+            <!--Call SignOff  -->
+            <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                <form action="">
                     <div class="sm:flex sm:items-center">
                         <div class="sm:flex-auto">
                             <h1 class="text-xl font-semibold text-gray-900">Call SignOff Details</h1>
@@ -1464,13 +1624,18 @@
                         </div>
 
                     </div>
-                </div>
+                    <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                        <button type="submit"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+                    </div>
+                </form>
+            </div>
 
 
 
 
 
-            </form>
+
 
 
         </main>

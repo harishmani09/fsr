@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ServiceProviderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +23,11 @@ Route::get('/', function () {
 // Route::get('/', function () {
 //     return view('home');
 // });
+
+Route::post('/serviceProvider', [ServiceProviderController::class, 'store']);
+Route::post('/productDetails', [ProductController::class, 'store']);
+Route::post('/customerDetails', [CustomerController::class, 'store']);
+
 
 Route::middleware([
     'auth:sanctum',

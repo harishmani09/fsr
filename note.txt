@@ -1,0 +1,9 @@
+SELECT companies.name AS company_name,
+  companies.status AS company_status,
+  count(DISTINCT investor.investor_name) AS investor_number
+FROM tutorial.crunchbase_companies compaines
+LEFT JOIN tutorial.crunchbase_investments investor
+ON companies.permalink = investor.company_permalink
+WHERE companies.state_code = 'NY'
+GROUP BY company_name, company_status
+ORDER BY investor_number DESC;
