@@ -14,6 +14,7 @@ class CustomerController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email_address' => 'required|email|unique:customers,email_address',
+            'mobile_no' => 'required|regex:/[0-9]{10}/',
             'country' => 'required',
             'street_address' => 'required',
             'city' => 'required',

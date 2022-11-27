@@ -13,17 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('sign_offs', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email_address');
+            $table->string('customer_name');
             $table->unsignedBigInteger('mobile_no');
-            $table->string('country');
-            $table->string('street_address');
-            $table->string('city');
-            $table->string('region');
-            $table->unsignedBigInteger('postal_code');
+            $table->string('customer_designation');
+            $table->string('customer_signature');
+            $table->string('engineer_name');
+            $table->string('engineer_signature');
+            $table->timestamp('signoff_date');
             $table->timestamps();
         });
     }
@@ -35,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('sign_offs');
     }
 };

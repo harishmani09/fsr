@@ -7,3 +7,6 @@ ON companies.permalink = investor.company_permalink
 WHERE companies.state_code = 'NY'
 GROUP BY company_name, company_status
 ORDER BY investor_number DESC;
+
+
+alpine: x-model binds a text field to piece of data

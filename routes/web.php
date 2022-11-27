@@ -1,9 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CallController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SignOffController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PartFailedController;
+use App\Http\Controllers\InstallationController;
+use App\Http\Controllers\PartReplacementController;
 use App\Http\Controllers\ServiceProviderController;
+use App\Http\Controllers\CustomerFeedbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +34,13 @@ Route::get('/', function () {
 Route::post('/serviceProvider', [ServiceProviderController::class, 'store']);
 Route::post('/productDetails', [ProductController::class, 'store']);
 Route::post('/customerDetails', [CustomerController::class, 'store']);
+Route::post('/siteDetails', [SiteController::class, 'store']);
+Route::post('/installationDetails', [InstallationController::class, 'store']);
+Route::post('/callDetails', [CallController::class, 'store']);
+Route::post('/feedbackDetails', [CustomerFeedbackController::class, 'store']);
+Route::post('/partReplacement', [PartReplacementController::class, 'store']);
+Route::post('/partFailed', [PartFailedController::class, 'store']);
+Route::post('/signoff', [SignOffController::class, 'store']);
 
 
 Route::middleware([
