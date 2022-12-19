@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class SignOffController extends Controller
 {
+
+    public function index()
+    {
+        $signoffs = SignOff::latest()->get();
+        // return view('reports.index', compact('signoffs'));
+    }
+
+
     public function store(Request $request)
     {
 

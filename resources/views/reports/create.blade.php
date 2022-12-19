@@ -5,23 +5,10 @@
             <h2 class="text-center mt-6 font-bold text-4xl">Create Field Report</h2>
         </header>
         <main class="text-center mt-8 font-medium">
-            <!--
-  This example requires some changes to your config:
 
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
             <!--call & service provider details -->
             <div class="bg-white px-4 py-5 shadow sm:rounded-lg  sm:p-6 ">
-                <form action="/serviceProvider" method="POST">
+                <form action="/serviceProvider" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="md:grid md:grid-cols-2 w-full md:gap-6">
 
@@ -1008,7 +995,7 @@
                                 <p class="mt-2 text-sm text-gray-700">Please enter details of call below</p>
                             </div>
                             <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                                <button type="button" @click="$refs.mytable.insertRow(0)"
+                                <button type="button" onclick="addCalls()"
                                     class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add
                                     Visits</button>
                             </div>
@@ -1016,107 +1003,40 @@
 
                         <div
                             class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
-                            <table class="min-w-full divide-y divide-gray-300">
-                                <thead class="bg-gray-50">
-                                    <tr>
-                                        <th scope="col"
-                                            class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                            Call Details</th>
-                                        <th scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
-                                            Job Start Date</th>
-                                        <th scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                            Job Start Time</th>
-                                        <th scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
-                                            Job End Date</th>
-                                        <th scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                            Job End Time</th>
-                                        <th scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                            Travel Time</th>
-                                        <th scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                            Call Status
+                            <table id="cust_calls" class="min-w-full divide-y divide-gray-300">
 
-                                        </th>
-                                        <th scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                            Engineer Accompanied</th>
-                                        <th scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                            Complaint Details</th>
+                                <tr>
+                                    <th scope="col"
+                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                        Call Details</th>
+                                    <th scope="col"
+                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                        Job Start Date</th>
+                                    <th scope="col"
+                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                        Job Start Time</th>
+                                    <th scope="col"
+                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                        Job End Date</th>
+                                    <th scope="col"
+                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                        Job End Time</th>
+                                    <th scope="col"
+                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                        Travel Time</th>
+                                    <th scope="col"
+                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                        Call Status
 
-                                    </tr>
-                                </thead>
-                                <tbody x-ref="mytable" class="divide-y divide-gray-200 bg-white">
-                                    <tr>
-                                        <td
-                                            class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
-                                            <div class="mt-1">
-                                                <input type="text" name="call_number" id="volt"
-                                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                            </div>
+                                    </th>
+                                    <th scope="col"
+                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                        Engineer Accompanied</th>
+                                    <th scope="col"
+                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                        Complaint Details</th>
 
-                                        </td>
-                                        <td class="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
-                                            <div class="mt-1">
-                                                <input type="date" name="job_start" id="volt"
-                                                    class="block w-20 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                            </div>
-                                        </td>
-                                        <td class="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                                            <div class="mt-1">
-                                                <input type="datetime-local" name="job_starttime" id="volt"
-                                                    class="block w-20 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                            </div>
-                                        </td>
-                                        <td class="px-3 py-4 text-sm text-gray-500">
-                                            <div class="mt-1">
-                                                <input type="date" name="job_end" id="volt"
-                                                    class="block w-20 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                            </div>
-                                        </td>
-                                        <td class="px-3 py-4 text-sm text-gray-500">
-                                            <div class="mt-1">
-                                                <input type="datetime-local" name="job_endtime" id="volt"
-                                                    class="block w-20 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                            </div>
-                                        </td>
-                                        <td class="px-3 py-4 text-sm text-gray-500">
-                                            <div class="mt-1">
-                                                <input type="text" name="travel_time" id="volt"
-                                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                            </div>
-                                        </td>
-                                        <td class="px-3 py-4 text-sm text-gray-500">
-                                            <div>
-                                                <select id="call" name="call_status"
-                                                    class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                                                    <option value="call_open" selected>Call Open</option>
-                                                    <option value="call_closed">Call Closed</option>
-                                                    <option value="call_consider">Under Consideration</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <td class="px-3 py-4 text-sm text-gray-500">
-                                            <div class="mt-1">
-                                                <input type="text" name="engineer_name" id="volt"
-                                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                            </div>
-                                        </td>
-                                        <td class="px-3 py-4 text-sm text-gray-500">
-                                            <div class="mt-1">
-                                                <input type="text" name="complaint_details" id="volt"
-                                                    class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <!-- More people... -->
-                                </tbody>
+                                </tr>
                             </table>
                         </div>
                         <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
@@ -1332,8 +1252,8 @@
 
                                             <div class="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
                                                 <div class="flex items-center">
-                                                    <input id="IT" name="engineer_quality"
-                                                        value="below_avg" type="radio" checked
+                                                    <input id="IT" name="engineer_quality" value="below_avg"
+                                                        type="radio" checked
                                                         class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                                     <label for="IT"
                                                         class="ml-3 block text-sm font-medium text-gray-700">Below
@@ -1356,16 +1276,16 @@
                                                         class="ml-3 block text-sm font-medium text-gray-700">Good</label>
                                                 </div>
                                                 <div class="flex items-center">
-                                                    <input id="health-care" name="engineer_quality"
-                                                        value="very_good" type="radio"
+                                                    <input id="health-care" name="engineer_quality" value="very_good"
+                                                        type="radio"
                                                         class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                                     <label for="health-care"
                                                         class="ml-3 block text-sm font-medium text-gray-700">Very
                                                         Good</label>
                                                 </div>
                                                 <div class="flex items-center">
-                                                    <input id="other" name="engineer_quality"
-                                                        value="excellent" type="radio"
+                                                    <input id="other" name="engineer_quality" value="excellent"
+                                                        type="radio"
                                                         class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                                     <label for="Other"
                                                         class="ml-3 block text-sm font-medium text-gray-700">Excellent</label>
@@ -1483,72 +1403,37 @@
                             <p class="mt-2 text-sm text-gray-700">Please enter details of parts replaced</p>
                         </div>
                         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                            <button @click="$refs.partTable.insertRow()" type="button"
+                            <button onclick="addNewRow()" type="button"
                                 class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add
                                 Replaced Parts</button>
+                            {{-- <button onclick="deleteRow(ele)" type="button"
+                                class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Delete
+                                Parts</button> --}}
                         </div>
                     </div>
                     <div
                         class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-300">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th scope="col"
-                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                        Part Code</th>
-                                    <th scope="col"
-                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
-                                        Description</th>
-                                    <th scope="col"
-                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                        Sr No.</th>
-                                    <th scope="col"
-                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
-                                        Batch Code</th>
-                                    <th scope="col"
-                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                        Qty</th>
+                        <table id="partTable" class="min-w-full divide-y divide-gray-300">
 
-                            </thead>
-                            <tbody x-ref="partTable" class="divide-y divide-gray-200 bg-white">
-                                <tr>
-                                    <td
-                                        class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
-                                        <div class="mt-1">
-                                            <input type="text" name="part_code" id="volt"
-                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                        </div>
-
-                                    </td>
-                                    <td class="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
-                                        <div class="mt-1">
-                                            <input type="text" name="part_description" id="volt"
-                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                        </div>
-                                    </td>
-                                    <td class="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                                        <div class="mt-1">
-                                            <input type="text" name="part_srno" id="volt"
-                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                        </div>
-                                    </td>
-                                    <td class="px-3 py-4 text-sm text-gray-500">
-                                        <div class="mt-1">
-                                            <input type="text" name="part_batchcode" id="volt"
-                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                        </div>
-                                    </td>
-                                    <td class="px-3 py-4 text-sm text-gray-500">
-                                        <div class="mt-1">
-                                            <input type="text" name="part_quantity" id="volt"
-                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                        </div>
-                                    </td>
-
-                                </tr>
+                            <tr>
+                                <th scope="col"
+                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                    Part Code</th>
+                                <th scope="col"
+                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                    Description</th>
+                                <th scope="col"
+                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                    Sr No.</th>
+                                <th scope="col"
+                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                    Batch Code</th>
+                                <th scope="col"
+                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                    Qty</th>
+                            </tr>
 
 
-                            </tbody>
                         </table>
                     </div>
                     <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
@@ -1568,86 +1453,32 @@
                             <p class="mt-2 text-sm text-gray-700">Please enter details of failed parts</p>
                         </div>
                         <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                            <button type="button"
+                            <button type="button" onclick="addFailedPart()"
                                 class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add
                                 Failed Parts</button>
                         </div>
                     </div>
                     <div
                         class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
-                        <table class="min-w-full divide-y divide-gray-300">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th scope="col"
-                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                        Part Code</th>
-                                    <th scope="col"
-                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
-                                        Description</th>
-                                    <th scope="col"
-                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                        Sr No.</th>
-                                    <th scope="col"
-                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
-                                        Batch Code</th>
-                                    <th scope="col"
-                                        class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                        Qty</th>
+                        <table id="failedParts" class="min-w-full divide-y divide-gray-300">
 
-                            </thead>
-                            <tbody class="divide-y divide-gray-200 bg-white">
-                                <tr>
-                                    <td
-                                        class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
-                                        <div class="mt-1">
-                                            <input type="text" name="failed_part_code" id="volt"
-                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                        </div>
-                                        @error('failed_part_code')
-                                            <div class="text-red-500 text-xs">{{ $message }}</div>
-                                        @enderror
-                                    </td>
-                                    <td class="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
-                                        <div class="mt-1">
-                                            <input type="text" name="failed_part_desc" id="volt"
-                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                        </div>
-                                        @error('failed_part_desc')
-                                            <div class="text-red-500 text-xs">{{ $message }}</div>
-                                        @enderror
-                                    </td>
-                                    <td class="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                                        <div class="mt-1">
-                                            <input type="text" name="failed_part_srno" id="volt"
-                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                        </div>
-                                        @error('failed_part_srno')
-                                            <div class="text-red-500 text-xs">{{ $message }}</div>
-                                        @enderror
-                                    </td>
-                                    <td class="px-3 py-4 text-sm text-gray-500">
-                                        <div class="mt-1">
-                                            <input type="text" name="failed_part_batch" id="volt"
-                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                        </div>
-                                        @error('failed_part_batch')
-                                            <div class="text-red-500 text-xs">{{ $message }}</div>
-                                        @enderror
-                                    </td>
-                                    <td class="px-3 py-4 text-sm text-gray-500">
-                                        <div class="mt-1">
-                                            <input type="text" name="failed_part_qty" id="volt"
-                                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                        </div>
-                                        @error('failed_part_qty')
-                                            <div class="text-red-500 text-xs">{{ $message }}</div>
-                                        @enderror
-                                    </td>
-
-                                </tr>
-
-                                <!-- More people... -->
-                            </tbody>
+                            <tr>
+                                <th scope="col"
+                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                    Part Code</th>
+                                <th scope="col"
+                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                    Description</th>
+                                <th scope="col"
+                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                    Sr No.</th>
+                                <th scope="col"
+                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                    Batch Code</th>
+                                <th scope="col"
+                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                    Qty</th>
+                            </tr>
                         </table>
                     </div>
                     <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
@@ -1774,15 +1605,214 @@
                 </form>
             </div>
 
+            <!--Ad Hoc Expenses -->
+            <div x-data class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                <form action="/expenses" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="sm:flex sm:items-center">
+                        <div class="sm:flex-auto">
+                            <h1 class="text-xl font-semibold text-gray-900">Upload Expense Invoices</h1>
+                            <p class="mt-2 text-sm text-gray-700">Please Enter Invoice Expenses</p>
+                        </div>
+                        <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+                            <button onclick="addNewExpenseRow()" type="button"
+                                class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+                                Add Adhoc Expenses
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
+                        <table id="expenseTable" class="min-w-full divide-y divide-gray-300">
 
+                            <tr>
+                                <th scope="col"
+                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                    Expense Name</th>
+                                <th scope="col"
+                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                    Expense Description</th>
 
+                                <th scope="col"
+                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                    Total Expense</th>
+                                <th scope="col"
+                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                    Amount Claimed</th>
+                            </tr>
+                        </table>
+                        <div
+                            class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+                            <label for="cover-photo"
+                                class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Expense
+                                Invoices</label>
+                            <div class="mt-1 sm:col-span-2 sm:mt-0">
+                                <div
+                                    class="flex max-w-lg justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+                                    <div class="space-y-1 text-center">
+                                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor"
+                                            fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                            <path
+                                                d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div class="flex text-sm text-gray-600">
+                                            <label for="file-upload"
+                                                class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
+                                                <span>Upload a file</span>
+                                                <input id="file-upload" name="exp_file" type="file"
+                                                    class="sr-only">
+                                            </label>
+                                            <p class="pl-1">or drag and drop</p>
+                                        </div>
+                                        <p class="text-xs text-gray-500">PNG, JPG, PDF up to 5MB</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-
-
-
-
+                    <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                        <button type="submit"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save
+                        </button>
+                    </div>
+                </form>
+            </div>
         </main>
     </div>
 
+    <script>
+        function addNewRow() {
+            const table = document.querySelector('#partTable');
+            const rowCount = table.rows.length;
+            const cellCount = table.rows[0].cells.length;
+            const row = table.insertRow(rowCount);
+            for (let i = 0; i <= cellCount; i++) {
+                let cell = row.insertCell(i);
+                if (i <= cellCount - 1) {
+                    cell.innerHTML =
+                        '<input type="text" name="part_quantity" class ="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" >';
+                } else {
+                    cell.innerHTML = '<input type="button" value="delete" onclick="deleteRow(this)" />'
+                }
+            }
+        }
 
+        function deleteRow(ele) {
+            const table = document.querySelector('#partTable');
+            const rowCount = table.rows.length;
+            if (rowCount <= 1) {
+                alert('there is no row available to delete');
+                return;
+            };
+            if (ele) {
+                //delete specific row
+                ele.parentNode.parentNode.remove();
+            } else {
+                //delete last row
+                table.deleteRow(rowCount - 1);
+            }
+
+        }
+
+        function addNewExpenseRow() {
+            const table = document.querySelector('#expenseTable');
+            const rowCount = table.rows.length;
+            const cellCount = table.rows[0].cells.length;
+            const row = table.insertRow(rowCount);
+            for (let i = 0; i <= cellCount; i++) {
+                let cell = row.insertCell(i);
+                if (i <= cellCount - 1) {
+                    cell.innerHTML =
+                        '<input type="text" name="adhoc_expense" class ="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" >';
+                } else {
+                    cell.innerHTML = '<input type="button" value="delete" onclick="deleteExpenseRow(this)" />'
+                }
+            }
+        }
+
+        function deleteExpenseRow(ele) {
+            const table = document.querySelector('#expenseTable');
+            const rowCount = table.rows.length;
+            if (rowCount < 1) {
+                alert('there is no row available to delete');
+                return;
+            };
+            if (ele) {
+                //delete specific row
+                ele.parentNode.parentNode.remove();
+            } else {
+                //delete last row
+                table.deleteRow(rowCount - 1);
+            }
+
+        }
+
+        function addFailedPart() {
+            const table = document.querySelector('#failedParts');
+            const rowCount = table.rows.length;
+            const cellCount = table.rows[0].cells.length;
+            const row = table.insertRow(rowCount);
+            for (let i = 0; i <= cellCount; i++) {
+                let cell = row.insertCell(i);
+                if (i <= cellCount - 1) {
+                    cell.innerHTML =
+                        '<input type="text" name="adhoc_expense" class ="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" >';
+                } else {
+                    cell.innerHTML = '<input type="button" value="delete" onclick="deleteExpenseRow(this)" />'
+                }
+            }
+        }
+
+        function deleteFailedPart(ele) {
+            const table = document.querySelector('#failedParts');
+            const rowCount = table.rows.length;
+            if (rowCount < 1) {
+                alert('there is no row available to delete');
+                return;
+            };
+            if (ele) {
+                //delete specific row
+                ele.parentNode.parentNode.remove();
+            } else {
+                //delete last row
+                table.deleteRow(rowCount - 1);
+            }
+
+        }
+
+        function addCalls() {
+            const table = document.querySelector('#cust_calls');
+            const rowCount = table.rows.length;
+            const cellCount = table.rows[0].cells.length;
+            const row = table.insertRow(rowCount);
+            for (let i = 0; i <= cellCount; i++) {
+                let cell = row.insertCell(i);
+                if (i <= cellCount - 1) {
+                    cell.innerHTML =
+                        '<input type="text" name="adhoc_expense" class ="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" >';
+                } else {
+                    cell.innerHTML = '<input type="button" value="delete" onclick="deleteExpenseRow(this)" />'
+                }
+            }
+        }
+
+        function deleteCalls(ele) {
+            const table = document.querySelector('#cust_calls');
+            const rowCount = table.rows.length;
+            if (rowCount < 1) {
+                alert('there is no row available to delete');
+                return;
+            };
+            if (ele) {
+                //delete specific row
+                ele.parentNode.parentNode.remove();
+            } else {
+                //delete last row
+                table.deleteRow(rowCount - 1);
+            }
+
+        }
+    </script>
 </x-app-layout>

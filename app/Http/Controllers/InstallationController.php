@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 class InstallationController extends Controller
 {
 
+    public function index()
+    {
+        $installations = Installation::latest()->get();
+        // return view('reports.index', compact('installations'));
+    }
+
     public function store(Request $request)
     {
-
         $attributes = request()->validate([
             'volt_install' => 'required',
             'make_install' => 'required',

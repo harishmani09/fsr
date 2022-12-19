@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
+
+    public function index()
+    {
+        $customers = Customer::latest()->get();
+        // return view('projects.index', ['customers' => $customers]);
+    }
+
+
     public function store(Request $request)
     {
 

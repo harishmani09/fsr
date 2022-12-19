@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\CallController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SignOffController;
 use App\Http\Controllers\CustomerController;
@@ -27,9 +30,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/', function () {
-//     return view('home');
-// });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/reports/create', function () {
+    return view('reports.create');
+})->name('reports.create');
+
+Route::get('/reports', [ServiceProviderController::class, 'index'])->name('reports');
+// Route::get('/reports/download', [ProductController::class, 'index'])->name('reports.download');
+Route::get('/reports/pdf', PdfController::class)->name('reports.pdf')->middleware('auth');
+
 
 Route::post('/serviceProvider', [ServiceProviderController::class, 'store']);
 Route::post('/productDetails', [ProductController::class, 'store']);
@@ -41,26 +54,4 @@ Route::post('/feedbackDetails', [CustomerFeedbackController::class, 'store']);
 Route::post('/partReplacement', [PartReplacementController::class, 'store']);
 Route::post('/partFailed', [PartFailedController::class, 'store']);
 Route::post('/signoff', [SignOffController::class, 'store']);
-
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/fieldReport', function () {
-        return view('fieldReport');
-    })->name('fieldReport');
-});
-
-
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+Route::post('/expenses', [ExpenseController::class, 'store']);

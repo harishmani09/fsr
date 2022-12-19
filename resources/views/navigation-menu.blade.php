@@ -17,7 +17,12 @@
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('fieldReport') }}" :active="request()->routeIs('fieldReport')">
+                    <x-jet-nav-link href="{{ route('reports.create') }}" :active="request()->routeIs('reports.create')">
+                        {{ __('Create Field Report') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('reports') }}" :active="request()->routeIs('reports')">
                         {{ __('Field Report') }}
                     </x-jet-nav-link>
                 </div>

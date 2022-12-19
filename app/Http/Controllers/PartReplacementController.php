@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class PartReplacementController extends Controller
 {
+
+    public function index()
+    {
+        $partreplaces = PartReplacement::latest()->get();
+        // return view('reports.index', compact('partreplaces'));
+    }
+
+
+
+
     public function store(Request $request)
     {
 

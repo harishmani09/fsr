@@ -10,8 +10,11 @@
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.12",
         "laravel/sanctum": "^3.0",
+        "laravel/telescope": "^4.10",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.5"
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "livewire/livewire": "^2.5",
+        "spatie/browsershot": "^3.57"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

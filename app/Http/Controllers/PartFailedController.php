@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class PartFailedController extends Controller
 {
+    public function index()
+    {
+        $partfails = PartFailed::latest()->get();
+        // return view('reports.index', compact('partfails'));
+    }
+
+
     public function store(Request $request)
     {
 

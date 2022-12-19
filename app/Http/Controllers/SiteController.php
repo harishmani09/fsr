@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
+
+    public function index()
+    {
+        $sites = Site::latest()->get();
+        // return view('reports.index', compact('sites'));
+    }
+
     public function store(Request $request)
     {
         // dd('site');

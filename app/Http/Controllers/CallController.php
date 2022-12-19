@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class CallController extends Controller
 {
+
+    public function index()
+    {
+        $calls = Call::latest()->get();
+        // return view('reports.index', compact('calls'));
+    }
+
+
+
     public function store(Request $request)
     {
 

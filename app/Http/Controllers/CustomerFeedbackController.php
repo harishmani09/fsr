@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class CustomerFeedbackController extends Controller
 {
+
+    public function index()
+    {
+        $feedbacks = CustomerFeedback::latest()->get();
+        // return view('reports.index', ['feedbacks' => $feedbacks]);
+    }
+
+
     public function store(Request $request)
     {
 
