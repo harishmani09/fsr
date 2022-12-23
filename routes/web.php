@@ -37,9 +37,11 @@ Route::get('/dashboard', function () {
 
 Route::get('/reports/create', function () {
     return view('reports.create');
-})->name('reports.create');
+})->name('reports.create')->middleware('auth');
 
-Route::get('/reports', [ServiceProviderController::class, 'index'])->name('reports');
+Route::get('/reports', [ServiceProviderController::class, 'index'])->name('reports')->middleware(
+    'auth'
+);
 // Route::get('/reports/download', [ProductController::class, 'index'])->name('reports.download');
 Route::get('/reports/pdf', PdfController::class)->name('reports.pdf')->middleware('auth');
 
