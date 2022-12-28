@@ -30,6 +30,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="mx-auto max-w-4xl">
 
+
                     <main class="text-center mt-8 font-medium">
 
                         <!--call & service provider details -->
@@ -41,12 +42,15 @@
                                 <h3 class="text-lg font-medium leading-6 text-gray-900">Service Order Number</h3>
 
                                 <div class="border-0">
-                                    @foreach ($services as $service)
-                                        <ul>
-                                            <li>{{ $service->service_number }}</li>
-                                        </ul>
-                                    @endforeach
-
+                                    @if ($service->service_number)
+                                        @foreach ($services as $service)
+                                            <ul>
+                                                <li>{{ $service->service_number }}</li>
+                                            </ul>
+                                        @endforeach
+                                    @else
+                                        No Reports available as yet!
+                                    @endif
                                 </div>
                                 @error('service_number')
                                     <div class="text-red-500 text-xs">{{ $message }}</div>
@@ -653,7 +657,8 @@
                                                 <div class="mt-0 sm:col-span-6">
                                                     <label class="text-base font-medium text-gray-900">Dust
                                                         Levels</label>
-                                                    <p class="text-sm leading-5 text-gray-500">Levels of pollutants in
+                                                    <p class="text-sm leading-5 text-gray-500">Levels of pollutants
+                                                        in
                                                         the
                                                         enviroment?</p>
                                                     <div class="mt-4 grid-cols-6">
@@ -693,7 +698,8 @@
                                             </div>
                                             <!--Parameter 4: Voltage Details -->
                                             <div class="grid grid-cols-6 gap-2 mb-8">
-                                                <h4 class="pb-0 sm:col-span-6 font-semibold text-md">Voltage Details
+                                                <h4 class="pb-0 sm:col-span-6 font-semibold text-md">Voltage
+                                                    Details
                                                 </h4>
                                                 <div class="mt-0 sm:col-span-6">
                                                     <label class="text-base font-medium text-gray-900">Electricity
@@ -712,7 +718,8 @@
                                                                 </div>
                                                                 <div class="ml-3 text-sm">
 
-                                                                    <p id="L1-N" class="text-gray-500">L1-N</p>
+                                                                    <p id="L1-N" class="text-gray-500">L1-N
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                             <div class="relative flex items-start">
@@ -726,7 +733,8 @@
                                                                 </div>
                                                                 <div class="ml-3 text-sm">
 
-                                                                    <p id="L2-N" class="text-gray-500">L2-N</p>
+                                                                    <p id="L2-N" class="text-gray-500">L2-N
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                             <div class="relative flex items-start">
@@ -740,7 +748,8 @@
                                                                 </div>
                                                                 <div class="ml-3 text-sm">
 
-                                                                    <p id="L3-N" class="text-gray-500">L3-N</p>
+                                                                    <p id="L3-N" class="text-gray-500">L3-N
+                                                                    </p>
                                                                 </div>
                                                             </div>
 
@@ -757,7 +766,8 @@
                                                                 </div>
                                                                 <div class="ml-3 text-sm">
 
-                                                                    <p id="L1-L2" class="text-gray-500">L1-L2</p>
+                                                                    <p id="L1-L2" class="text-gray-500">L1-L2
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                             <div class="relative flex items-start">
@@ -771,7 +781,8 @@
                                                                 </div>
                                                                 <div class="ml-3 text-sm">
 
-                                                                    <p id="L2-L3" class="text-gray-500">L2-L3</p>
+                                                                    <p id="L2-L3" class="text-gray-500">L2-L3
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                             <div class="relative flex items-start">
@@ -785,7 +796,8 @@
                                                                 </div>
                                                                 <div class="ml-3 text-sm">
 
-                                                                    <p id="L3-L1" class="text-gray-500">L3-L1</p>
+                                                                    <p id="L3-L1" class="text-gray-500">L3-L1
+                                                                    </p>
                                                                 </div>
                                                             </div>
 
@@ -869,7 +881,8 @@
                                             </div>
                                             <!--Parameter 5:UPS Status -->
                                             <div class="grid grid-cols-6 gap-2">
-                                                <h4 class="pb-0 sm:col-span-6 font-semibold text-md">UPS Status</h4>
+                                                <h4 class="pb-0 sm:col-span-6 font-semibold text-md">UPS Status
+                                                </h4>
                                                 <div class="mt-0 sm:col-span-3">
 
                                                     <fieldset class="mt-4">
@@ -927,7 +940,8 @@
                         <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
                             <div class="md:grid md:grid-cols-3 md:gap-6">
                                 <div class="md:col-span-1">
-                                    <h3 class="text-lg font-medium leading-6 text-gray-900">Installation Details</h3>
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900">Installation Details
+                                    </h3>
                                     <p class="mt-1 text-sm text-gray-500">Please enter installation details here
                                     </p>
                                 </div>
@@ -936,8 +950,10 @@
                                         @foreach ($installations as $installation)
                                             <!--Parameter 1:AC Details -->
                                             <div class="grid grid-cols-6 gap-2 mb-8">
-                                                <h4 class="sm:col-span-6 font-semibold text-md">Battery Details</h4>
-                                                <p class=" text-xs font-semibold sm:col-span-6">(For External Batteries
+                                                <h4 class="sm:col-span-6 font-semibold text-md">Battery Details
+                                                </h4>
+                                                <p class=" text-xs font-semibold sm:col-span-6">(For External
+                                                    Batteries
                                                     FR
                                                     BDR
                                                     to
@@ -1082,7 +1098,8 @@
                                                             class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
                                                             <option value="call_open" selected>Call Open</option>
                                                             <option value="call_closed">Call Closed</option>
-                                                            <option value="call_consider">Under Consideration</option>
+                                                            <option value="call_consider">Under Consideration
+                                                            </option>
                                                         </select>
                                                     </div>
                                                 </td>
@@ -1473,7 +1490,8 @@
                             <div class="sm:flex sm:items-center">
                                 <div class="sm:flex-auto">
                                     <h1 class="text-xl font-semibold text-gray-900">Part Replacement Details</h1>
-                                    <p class="mt-2 text-sm text-gray-700">Please enter details of parts replaced</p>
+                                    <p class="mt-2 text-sm text-gray-700">Please enter details of parts replaced
+                                    </p>
                                 </div>
                                 <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
                                     <button onclick="addNewRow()" type="button"
@@ -1814,6 +1832,7 @@
                         </div>
 
                     </main>
+
                 </div>
 
                 <script>
