@@ -40,11 +40,20 @@ class LiveSite extends Component
 
     public function siteForm()
     {
-        $validatedData = $this->validate(
-            // ['elec_phase' => implode(',', $this->elec_phase)]
-        );
+        $this->validate();
 
-        Site::create($validatedData);
+        Site::create([
+            'ac_provided' => $this->ac_provided,
+            'ac_working' => $this->ac_working,
+            'dg_details' => $this->dg_details,
+            'kva' => $this->kva,
+            'dust_level' => $this->dust_level,
+            'elec_phase' => collect($this->elec_phase)->implode(','),
+            'neutral_volt' => $this->neutral_volt,
+            'load_v' => $this->load_v,
+            'load_type' => $this->load_type,
+            'ups' => $this->ups
+        ]);
 
         session()->flash('success_message', 'Site details saved successfully');
 

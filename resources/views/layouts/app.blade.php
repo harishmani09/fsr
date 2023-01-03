@@ -42,12 +42,12 @@
     @stack('modals')
 
     @livewireScripts
-    @if (session()->has('success'))
+    @if (session()->has('success_message'))
         <div x-data="{ open: true }" x-init="setTimeout(() => {
             open = false
         }, 3000)" x-show="open"
             class=" px-2 py-1 fixed top-8 right-8 bg-blue-500 text-white rounded text-sm font-semibold">
-            <p>{{ session('success') }}</p>
+            <p>{{ session('success_message') }}</p>
         </div>
     @endif
 

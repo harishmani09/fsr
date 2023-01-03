@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('service_quality');
             $table->string('call_logging');
             $table->string('engineer_quality');
-            $table->string('overall_quality');
+            $table->string('overall_satisfaction');
             $table->text('problem_desc');
             $table->text('action_taken');
             $table->text('general_feedback');

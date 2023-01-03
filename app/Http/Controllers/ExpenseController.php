@@ -29,8 +29,8 @@ class ExpenseController extends Controller
             'exp_file' => 'sometimes|required|mimes:pdf,jpg,png,jepg,bmp'
         ]);
         $file = request()->file('exp_file');
-        $filename = rand(1, 9999) . date('Y-m-d') . $file->getClientOriginalName();
-        $attributes['exp_file'] = request()->file('exp_file')->storeAs('expenses', $filename, 's3');
+        $filename = uniqid() . $file->getClientOriginalName();
+        $attributes['exp_file'] = request()->file('exp_file')->storeAs('expenses/users/', $filename, 's3');
         Expense::create($attributes);
 
         return back()->with('success', 'Expenses details saved successfully');

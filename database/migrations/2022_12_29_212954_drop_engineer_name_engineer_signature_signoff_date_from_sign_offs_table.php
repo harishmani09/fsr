@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sign_offs', function (Blueprint $table) {
-            $table->id();
-            $table->string('customer_name');
-            $table->unsignedBigInteger('mobile_no');
-            $table->string('customer_designation');
-            $table->string('customer_signature');
-
-            $table->timestamps();
+        Schema::table('sign_offs', function (Blueprint $table) {
+            $table->dropColumn(['engineer_name', 'engineer_signature', 'signoff_date']);
         });
     }
 
@@ -31,6 +25,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sign_offs');
+        Schema::table('sign_offs', function (Blueprint $table) {
+            $table->string('engineer_name');
+            $table->string('engineer_signature');
+            $table->timestamp('signoff_date');
+        });
     }
 };

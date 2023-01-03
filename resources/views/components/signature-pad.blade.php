@@ -5,6 +5,8 @@
         <div>
             <canvas x-ref="canvas" name="signature" class="border rounded shadow"></canvas>
             <button id="clear-btn" class="bg-gray-500 text-white px-2 py-1 rounded-md mt-2">clear</button>
+            <button @click="open=false" class="bg-gray-500 text-white px-2 py-1 rounded-md mt-2">Close
+                Pad</button>
         </div>
 
     </div>

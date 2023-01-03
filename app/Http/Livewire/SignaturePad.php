@@ -12,7 +12,9 @@ class SignaturePad extends Component
 
     public function submit()
     {
-        Storage::put('signatures/signature.png', base64_decode(Str::of($this->signature)->after(',')));
+        $fileName = uniqid() . '.png';
+        Storage::disk('s3')
+            ->put("signatures/users/{$fileName}", base64_decode(Str::of($this->signature)->after(',')));
     }
 
     public function render()
