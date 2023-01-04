@@ -42,15 +42,17 @@
                                 <h3 class="text-lg font-medium leading-6 text-gray-900">Service Order Number</h3>
 
                                 <div class="border-0">
-                                    @if ($service->service_number)
-                                        @foreach ($services as $service)
+
+                                    @foreach ($services as $service)
+                                        @if ($service->service_number)
                                             <ul>
                                                 <li>{{ $service->service_number }}</li>
                                             </ul>
-                                        @endforeach
-                                    @else
-                                        No Reports available as yet!
-                                    @endif
+                                        @else
+                                            No Reports available as yet!
+                                        @endif
+                                    @endforeach
+
                                 </div>
                                 @error('service_number')
                                     <div class="text-red-500 text-xs">{{ $message }}</div>
@@ -1020,22 +1022,18 @@
                                             <tr>
                                                 <th scope="col"
                                                     class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                                    Call Details</th>
+                                                    Call Number</th>
                                                 <th scope="col"
                                                     class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
                                                     Job Start Date</th>
-                                                <th scope="col"
-                                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                                    Job Start Time</th>
+
                                                 <th scope="col"
                                                     class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
                                                     Job End Date</th>
+
                                                 <th scope="col"
                                                     class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                                    Job End Time</th>
-                                                <th scope="col"
-                                                    class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                                    Travel Time</th>
+                                                    Travel Time (in Hrs)</th>
                                                 <th scope="col"
                                                     class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
                                                     Call Status
@@ -1050,71 +1048,48 @@
 
                                             </tr>
                                         </thead>
-                                        <tbody x-ref="mytable" class="divide-y divide-gray-200 bg-white">
+                                        <tbody class="divide-y divide-gray-200 bg-white">
                                             <tr>
-                                                <td
-                                                    class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
-                                                    <div class="mt-1">
-                                                        <input type="text" name="call_number" id="volt"
-                                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                    </div>
+                                                @foreach ($calls as $call)
+                                                    <td
+                                                        class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
+                                                        <div class="mt-1">
+                                                            {{ $call->call_number }}
+                                                        </div>
+                                                    </td>
+                                                    <td class="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
+                                                        <div class="mt-1">
+                                                            {{ $call->job_start }}
+                                                        </div>
+                                                    </td>
 
-                                                </td>
-                                                <td class="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
-                                                    <div class="mt-1">
-                                                        <input type="date" name="job_start" id="volt"
-                                                            class="block w-20 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                    </div>
-                                                </td>
-                                                <td class="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                                                    <div class="mt-1">
-                                                        <input type="datetime-local" name="job_starttime"
-                                                            id="volt"
-                                                            class="block w-20 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                    </div>
-                                                </td>
-                                                <td class="px-3 py-4 text-sm text-gray-500">
-                                                    <div class="mt-1">
-                                                        <input type="date" name="job_end" id="volt"
-                                                            class="block w-20 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                    </div>
-                                                </td>
-                                                <td class="px-3 py-4 text-sm text-gray-500">
-                                                    <div class="mt-1">
-                                                        <input type="datetime-local" name="job_endtime"
-                                                            id="volt"
-                                                            class="block w-20 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                    </div>
-                                                </td>
-                                                <td class="px-3 py-4 text-sm text-gray-500">
-                                                    <div class="mt-1">
-                                                        <input type="text" name="travel_time" id="volt"
-                                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                    </div>
-                                                </td>
-                                                <td class="px-3 py-4 text-sm text-gray-500">
-                                                    <div>
-                                                        <select id="call" name="call_status"
-                                                            class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                                                            <option value="call_open" selected>Call Open</option>
-                                                            <option value="call_closed">Call Closed</option>
-                                                            <option value="call_consider">Under Consideration
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </td>
-                                                <td class="px-3 py-4 text-sm text-gray-500">
-                                                    <div class="mt-1">
-                                                        <input type="text" name="engineer_name" id="volt"
-                                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                    </div>
-                                                </td>
-                                                <td class="px-3 py-4 text-sm text-gray-500">
-                                                    <div class="mt-1">
-                                                        <input type="text" name="complaint_details" id="volt"
-                                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                    </div>
-                                                </td>
+                                                    <td class="px-3 py-4 text-sm text-gray-500">
+                                                        <div class="mt-1">
+                                                            {{ $call->job_end }}
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="px-3 py-4 text-sm text-gray-500">
+                                                        <div class="mt-1">
+                                                            {{ $call->travel_time }}
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-3 py-4 text-sm text-gray-500">
+                                                        <div>
+                                                            {{ $call->call_status }}
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-3 py-4 text-sm text-gray-500">
+                                                        <div class="mt-1">
+                                                            {{ $call->engineer_name }}
+                                                        </div>
+                                                    </td>
+                                                    <td class="px-3 py-4 text-sm text-gray-500">
+                                                        <div class="mt-1">
+                                                            {{ $call->complaint_details }}
+                                                        </div>
+                                                    </td>
+                                                @endforeach
                                             </tr>
 
                                             <!-- More people... -->
@@ -1493,64 +1468,12 @@
                                     <p class="mt-2 text-sm text-gray-700">Please enter details of parts replaced
                                     </p>
                                 </div>
-                                <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                                    <button onclick="addNewRow()" type="button"
-                                        class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add
-                                        Replaced Parts</button>
-                                    {{-- <button onclick="deleteRow(ele)" type="button"
-                                            class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Delete
-                                            Parts</button> --}}
-                                </div>
+
                             </div>
                             <div
                                 class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
                                 <table id="partTable" class="min-w-full divide-y divide-gray-300">
-
-                                    <tr>
-                                        <th scope="col"
-                                            class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                            Part Code</th>
-                                        <th scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
-                                            Description</th>
-                                        <th scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                            Sr No.</th>
-                                        <th scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
-                                            Batch Code</th>
-                                        <th scope="col"
-                                            class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
-                                            Qty</th>
-                                    </tr>
-
-
-                                </table>
-                            </div>
-                            <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                                <button type="submit"
-                                    class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
-                            </div>
-
-                        </div>
-
-                        <!--Part Failed Feedback -->
-                        <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
-                            <div class="sm:flex sm:items-center">
-                                <div class="sm:flex-auto">
-                                    <h1 class="text-xl font-semibold text-gray-900">Parts Failed Details</h1>
-                                    <p class="mt-2 text-sm text-gray-700">Please enter details of failed parts</p>
-                                </div>
-                                <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-                                    <button type="button"
-                                        class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add
-                                        Failed Parts</button>
-                                </div>
-                            </div>
-                            <div
-                                class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
-                                <table class="min-w-full divide-y divide-gray-300">
-                                    <thead class="bg-gray-50">
+                                    <thead>
                                         <tr>
                                             <th scope="col"
                                                 class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
@@ -1568,65 +1491,130 @@
                                                 class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
                                                 Qty</th>
 
-                                    </thead>
-                                    <tbody class="divide-y divide-gray-200 bg-white">
-                                        <tr>
-                                            <td
-                                                class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
-                                                <div class="mt-1">
-                                                    <input type="text" name="failed_part_code" id="volt"
-                                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                </div>
-                                                @error('failed_part_code')
-                                                    <div class="text-red-500 text-xs">{{ $message }}</div>
-                                                @enderror
-                                            </td>
-                                            <td class="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
-                                                <div class="mt-1">
-                                                    <input type="text" name="failed_part_desc" id="volt"
-                                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                </div>
-                                                @error('failed_part_desc')
-                                                    <div class="text-red-500 text-xs">{{ $message }}</div>
-                                                @enderror
-                                            </td>
-                                            <td class="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
-                                                <div class="mt-1">
-                                                    <input type="text" name="failed_part_srno" id="volt"
-                                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                </div>
-                                                @error('failed_part_srno')
-                                                    <div class="text-red-500 text-xs">{{ $message }}</div>
-                                                @enderror
-                                            </td>
-                                            <td class="px-3 py-4 text-sm text-gray-500">
-                                                <div class="mt-1">
-                                                    <input type="text" name="failed_part_batch" id="volt"
-                                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                </div>
-                                                @error('failed_part_batch')
-                                                    <div class="text-red-500 text-xs">{{ $message }}</div>
-                                                @enderror
-                                            </td>
-                                            <td class="px-3 py-4 text-sm text-gray-500">
-                                                <div class="mt-1">
-                                                    <input type="text" name="failed_part_qty" id="volt"
-                                                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                                                </div>
-                                                @error('failed_part_qty')
-                                                    <div class="text-red-500 text-xs">{{ $message }}</div>
-                                                @enderror
-                                            </td>
-
                                         </tr>
-
-                                        <!-- More people... -->
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($partsReplacement as $partReplacement)
+                                            <tr>
+                                                <td
+                                                    class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
+                                                    <div class="mt-1">
+                                                        {{ $partReplacement->part_code }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
+                                                    <div class="mt-1">
+                                                        {{ $partReplacement->part_description }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
+                                                    <div class="mt-1">
+                                                        {{ $partReplacement->part_srno }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
+                                                    <div class="mt-1">
+                                                        {{ $partReplacement->part_batchcode }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
+                                                    <div class="mt-1">
+                                                        {{ $partReplacement->part_quantity }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                                <button type="submit"
-                                    class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+
+                        </div>
+
+                        <!--Part Failed Feedback -->
+                        <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                            <div class="sm:flex sm:items-center">
+                                <div class="sm:flex-auto">
+                                    <h1 class="text-xl font-semibold text-gray-900">Parts Failed Details</h1>
+                                    <p class="mt-2 text-sm text-gray-700">Please enter details of failed parts</p>
+                                </div>
+
+                            </div>
+                            <div
+                                class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-300">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col"
+                                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                Part Code</th>
+                                            <th scope="col"
+                                                class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                Description</th>
+                                            <th scope="col"
+                                                class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                                Part Sr.No.</th>
+                                            <th scope="col"
+                                                class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                Batch Code</th>
+                                            <th scope="col"
+                                                class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                                Qty</th>
+
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200 bg-white">
+                                        @foreach ($partsFailed as $partFailed)
+                                            <tr>
+                                                <td
+                                                    class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
+                                                    <div class="mt-1">
+                                                        {{ $partFailed->failed_part_code }}
+                                                    </div>
+                                                    @error('failed_part_code')
+                                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                                    @enderror
+                                                </td>
+                                                <td class="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
+                                                    <div class="mt-1">
+                                                        {{ $partFailed->failed_part_desc }}
+                                                    </div>
+                                                    @error('failed_part_desc')
+                                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                                    @enderror
+                                                </td>
+                                                <td class="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
+                                                    <div class="mt-1">
+                                                        {{ $partFailed->failed_part_srno }}
+                                                    </div>
+                                                    @error('failed_part_srno')
+                                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                                    @enderror
+                                                </td>
+                                                <td class="px-3 py-4 text-sm text-gray-500">
+                                                    <div class="mt-1">
+                                                        {{ $partFailed->failed_part_batch }}
+                                                    </div>
+                                                    @error('failed_part_batch')
+                                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                                    @enderror
+                                                </td>
+                                                <td class="px-3 py-4 text-sm text-gray-500">
+                                                    <div class="mt-1">
+                                                        {{ $partFailed->failed_part_qty }}
+                                                    </div>
+                                                    @error('failed_part_qty')
+                                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                                    @enderror
+                                                </td>
+
+                                            </tr>
+                                        @endforeach
+                                        <!-- More people... -->
+                                    </tbody>
+                                </table>
                             </div>
 
                         </div>
@@ -1644,117 +1632,130 @@
                             </div>
                             <div
                                 class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
-                                <div>
-                                    <label for="customer-name"
-                                        class="block text-sm font-medium text-gray-700">Customer
-                                        Name</label>
-                                    <div class="mt-1">
-                                        <input type="text" name="customer_name" id="customer-name"
-                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="customer name...">
-                                    </div>
-                                    @error('customer_name')
-                                        <div class="text-red-500 text-xs">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div>
-                                    <label for="mobile_no" class="block text-sm font-medium text-gray-700">Mobile
-                                        Number</label>
-                                    <div class="mt-1">
-                                        <input type="number" name="mobile_no" id="mobile_no"
-                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="customer mobile...">
-                                    </div>
-                                    @error('mobile_no')
-                                        <div class="text-red-500 text-xs">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div>
-                                    <label for="customer-designation"
-                                        class="block text-sm font-medium text-gray-700">Customer
-                                        Designation</label>
-                                    <div class="mt-1">
-                                        <input type="text" name="customer_designation"
-                                            id="customer-designation"
-                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="customer designation...">
-                                    </div>
-                                    @error('customer_designation')
-                                        <div class="text-red-500 text-xs">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div>
-                                    <label for="customer-signature"
-                                        class="block text-sm font-medium text-gray-700">Customer
-                                        Signature</label>
-                                    <div class="mt-1">
-                                        <input type="text" name="customer_signature" id="customer-signature"
-                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="customer signature...">
-                                    </div>
-                                    @error('customer_signature')
-                                        <div class="text-red-500 text-xs">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                                <table class="min-w-full divide-y divide-gray-300">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col"
+                                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                Customer Name</th>
+                                            <th scope="col"
+                                                class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                Mobile No.</th>
+                                            <th scope="col"
+                                                class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                                Customer Designation</th>
+                                            <th scope="col"
+                                                class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                Customer Signature</th>
 
 
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200 bg-white">
+                                        @foreach ($signOffs as $signOff)
+                                            <tr>
+                                                <td
+                                                    class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
+                                                    <div class="mt-1">
+                                                        {{ $signOff->customer_name }}
+                                                    </div>
+                                                    @error('failed_part_code')
+                                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                                    @enderror
+                                                </td>
+                                                <td class="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
+                                                    <div class="mt-1">
+                                                        {{ $signOff->mobile_no }}
+                                                    </div>
+                                                    @error('failed_part_desc')
+                                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                                    @enderror
+                                                </td>
+                                                <td class="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
+                                                    <div class="mt-1">
+                                                        {{ $signOff->customer_designation }}
+                                                    </div>
+                                                    @error('failed_part_srno')
+                                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                                    @enderror
+                                                </td>
+                                                <td class="px-3 py-4 text-sm text-gray-500">
+                                                    <div class="mt-1">
+                                                        {{ $signOff->customer_signature }}
+                                                    </div>
+                                                    @error('failed_part_batch')
+                                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                                    @enderror
+                                                </td>
+
+
+                                            </tr>
+                                        @endforeach
+                                        <!-- More people... -->
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="mt-2 text-lg font-semibold text-gray-700">Engineer Details</div>
                             <div
                                 class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
-                                <div>
-                                    <label for="engineer-name"
-                                        class="block text-sm font-medium text-gray-700">Engineer
-                                        Name</label>
-                                    <div class="mt-1">
-                                        <input type="text" name="engineer_name" id="engineer-name"
-                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="engineer name...">
-                                    </div>
-                                    @error('engineer_name')
-                                        <div class="text-red-500 text-xs">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                                <table class="min-w-full divide-y divide-gray-300">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col"
+                                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                Engineer Name</th>
+                                            <th scope="col"
+                                                class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">
+                                                Engineer Signature</th>
+                                            <th scope="col"
+                                                class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">
+                                                Signoff Date</th>
 
 
-                                <div>
-                                    <label for="engineer-signature"
-                                        class="block text-sm font-medium text-gray-700">Engineer
-                                        Signature</label>
-                                    <div class="mt-1">
-                                        <input type="text" name="engineer_signature" id="engineer-signature"
-                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="engineer signature...">
-                                    </div>
-                                    @error('engineer_signature')
-                                        <div class="text-red-500 text-xs">{{ $message }}</div>
-                                    @enderror
-                                </div>
 
-                                <div>
-                                    <label for="sign-date" class="block text-sm font-medium text-gray-700">SignOff
-                                        Date</label>
-                                    <div class="mt-1">
-                                        <input type="date" name="signoff_date" id="sign-date"
-                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="sign-date...">
-                                    </div>
-                                    @error('signoff_date')
-                                        <div class="text-red-500 text-xs">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200 bg-white">
+                                        @foreach ($engineers as $engineer)
+                                            <tr>
+                                                <td
+                                                    class="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
+                                                    <div class="mt-1">
+                                                        {{ $engineer->engineer_name }}
+                                                    </div>
+                                                    @error('failed_part_code')
+                                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                                    @enderror
+                                                </td>
+                                                <td class="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">
+                                                    <div class="mt-1">
+                                                        {{ $engineer->engineer_signature }}
+                                                    </div>
+                                                    @error('failed_part_desc')
+                                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                                    @enderror
+                                                </td>
+                                                <td class="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">
+                                                    <div class="mt-1">
+                                                        {{ $engineer->signoff_date }}
+                                                    </div>
+                                                    @error('failed_part_srno')
+                                                        <div class="text-red-500 text-xs">{{ $message }}</div>
+                                                    @enderror
+                                                </td>
 
+
+
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                                <button type="submit"
-                                    class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
-                            </div>
+
 
                         </div>
 
                         <!--Ad Hoc Expenses -->
-                        <div x-data class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                        {{-- <div x-data class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
 
 
                             <div class="sm:flex sm:items-center">
@@ -1766,9 +1767,7 @@
                                     <button onclick="addNewExpenseRow()" type="button"
                                         class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Add
                                         Adhoc Expenses</button>
-                                    {{-- <button onclick="deleteExpenseRow(ele)" type="button"
-                                            class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">Delete
-                                            Adhoc Expense</button> --}}
+
 
                                 </div>
                             </div>
@@ -1829,79 +1828,13 @@
                                 <button type="submit"
                                     class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </main>
 
                 </div>
 
-                <script>
-                    function addNewRow() {
-                        const table = document.querySelector('#partTable');
-                        const rowCount = table.rows.length;
-                        const cellCount = table.rows[0].cells.length;
-                        const row = table.insertRow(rowCount);
-                        for (let i = 0; i < cellCount; i++) {
-                            let cell = row.insertCell(i);
-                            if (i < cellCount - 1) {
-                                cell.innerHTML =
-                                    '<input type="text" name="part_quantity" class ="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" >';
-                            } else {
-                                cell.innerHTML = '<input type="button" value="delete" onclick="deleteRow(this)" />'
-                            }
-                        }
-                    }
 
-                    function deleteRow(ele) {
-                        const table = document.querySelector('#partTable');
-                        const rowCount = table.rows.length;
-                        if (rowCount <= 1) {
-                            alert('there is no row available to delete');
-                            return;
-                        };
-                        if (ele) {
-                            //delete specific row
-                            ele.parentNode.parentNode.remove();
-                        } else {
-                            //delete last row
-                            table.deleteRow(rowCount - 1);
-                        }
-
-                    }
-
-                    function addNewExpenseRow() {
-                        const table = document.querySelector('#expenseTable');
-                        const rowCount = table.rows.length;
-                        const cellCount = table.rows[0].cells.length;
-                        const row = table.insertRow(rowCount);
-                        for (let i = 0; i < cellCount; i++) {
-                            let cell = row.insertCell(i);
-                            if (i < cellCount - 1) {
-                                cell.innerHTML =
-                                    '<input type="text" name="part_quantity" class ="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" >';
-                            } else {
-                                cell.innerHTML = '<input type="button" value="delete" onclick="deleteExpenseRow(this)" />'
-                            }
-                        }
-                    }
-
-                    function deleteExpenseRow(ele) {
-                        const table = document.querySelector('#expenseTable');
-                        const rowCount = table.rows.length;
-                        if (rowCount < 1) {
-                            alert('there is no row available to delete');
-                            return;
-                        };
-                        if (ele) {
-                            //delete specific row
-                            ele.parentNode.parentNode.remove();
-                        } else {
-                            //delete last row
-                            table.deleteRow(rowCount - 1);
-                        }
-
-                    }
-                </script>
             </div>
         </div>
     </div>

@@ -1,5 +1,11 @@
 <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
-    <form action="/expenses" method="POST" enctype="multipart/form-data">
+    <form action="/expenseUpload" method="POST" enctype="multipart/form-data">
+        @csrf
+        {{-- @if (session()->has('success_message'))
+            <div class="bg-green-500 text-white rounded-md py-2 px-1 shadow-md">
+                {{ session('success_message') }}
+            </div>
+        @endif --}}
         <div class="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
 
             <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">

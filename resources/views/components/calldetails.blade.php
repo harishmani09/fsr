@@ -2,6 +2,11 @@
 
 
     <div x-data="handler()">
+        @if (session()->has('success_message'))
+            <div class="bg-green-500 text-white rounded-md py-2 px-1 shadow-md">
+                {{ session('success_message') }}
+            </div>
+        @endif
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
                 <h1 class="text-xl font-semibold text-gray-900">Call Details</h1>

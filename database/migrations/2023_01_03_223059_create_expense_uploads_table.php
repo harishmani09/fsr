@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('expenses', function (Blueprint $table) {
+        Schema::create('expense_uploads', function (Blueprint $table) {
             $table->id();
-            $table->string('adhoc_expense')->nullable();
-            $table->text('exp_desc')->nullable();
-            $table->string('exp_amount')->nullable();
-            $table->string('claim_amount')->nullable();
-
+            $table->string('exp_file')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expenses');
+        Schema::dropIfExists('expense_uploads');
     }
 };

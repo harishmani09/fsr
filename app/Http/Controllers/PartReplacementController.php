@@ -31,6 +31,6 @@ class PartReplacementController extends Controller
 
         PartReplacement::create($attributes);
 
-        return back()->with('success', 'Installation details saved successfully');
+        return back()->with('success_message', 'Installation details saved successfully');
     }
 }

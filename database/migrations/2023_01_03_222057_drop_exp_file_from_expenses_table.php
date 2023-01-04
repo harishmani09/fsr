@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('expenses', function (Blueprint $table) {
-            $table->id();
-            $table->string('adhoc_expense')->nullable();
-            $table->text('exp_desc')->nullable();
-            $table->string('exp_amount')->nullable();
-            $table->string('claim_amount')->nullable();
-
-            $table->timestamps();
+        Schema::table('expenses', function (Blueprint $table) {
+            $table->dropColumn('exp_file');
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expenses');
+        Schema::table('expenses', function (Blueprint $table) {
+            $table->string('exp_file')->nullable();
+        });
     }
 };

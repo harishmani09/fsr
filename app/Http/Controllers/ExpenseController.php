@@ -26,13 +26,11 @@ class ExpenseController extends Controller
             'exp_desc' => 'required|sometimes',
             'exp_amount' => 'required|sometimes',
             'claim_amount' => 'required|sometimes',
-            'exp_file' => 'sometimes|required|mimes:pdf,jpg,png,jepg,bmp'
+
         ]);
-        $file = request()->file('exp_file');
-        $filename = uniqid() . $file->getClientOriginalName();
-        $attributes['exp_file'] = request()->file('exp_file')->storeAs('expenses/users/', $filename, 's3');
+
         Expense::create($attributes);
 
-        return back()->with('success', 'Expenses details saved successfully');
+        return back()->with('success_message', 'Expenses details saved successfully');
     }
 }

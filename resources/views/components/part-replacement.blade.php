@@ -2,6 +2,11 @@
 
 
     <div x-data="parthandler()">
+        @if (session()->has('success_message'))
+            <div class="bg-green-500 text-white rounded-md py-2 px-1 shadow-md">
+                {{ session('success_message') }}
+            </div>
+        @endif
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
                 <h1 class="text-xl font-semibold text-gray-900">Parts Replacement Details</h1>
@@ -109,7 +114,7 @@
 
                 saveForm(index) {
 
-                    let web_api = '/sample1';
+                    let web_api = '/partReplacement';
                     let response = fetch(web_api, {
                         method: 'POST',
                         body: JSON.stringify(this.parts[index]),

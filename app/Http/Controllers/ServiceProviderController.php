@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Call;
 use App\Models\Site;
 use App\Models\Product;
+use App\Models\SignOff;
 use App\Models\Customer;
-use App\Models\CustomerFeedback;
+use App\Models\Engineer;
+use App\Models\PartFailed;
 use App\Models\Installation;
 use Illuminate\Http\Request;
+use App\Models\PartReplacement;
 use App\Models\ServiceProvider;
+use App\Models\CustomerFeedback;
 
 class ServiceProviderController extends Controller
 {
@@ -25,9 +30,15 @@ class ServiceProviderController extends Controller
         $sites = Site::all();
         $installations = Installation::all();
         $feedbacks = CustomerFeedback::all();
+        $calls = Call::all();
+        $engineers = Engineer::all();
+        $partsFailed = PartFailed::all();
+        $partsReplacement = PartReplacement::all();
+        $signOffs = SignOff::all();
+
         return view(
             'reports.index',
-            compact(['services', 'products', 'customers', 'sites', 'installations', 'feedbacks'])
+            compact(['services', 'products', 'customers', 'sites', 'installations', 'feedbacks', 'calls', 'engineers', 'partsFailed', 'partsReplacement', 'signOffs'])
         );
     }
 

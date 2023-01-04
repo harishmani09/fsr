@@ -2,6 +2,11 @@
 
 
     <div x-data="expensehandler()">
+        {{-- @if (session()->has('success_message'))
+            <div class="bg-green-500 text-white rounded-md py-2 px-1 shadow-md">
+                {{ session('success_message') }}
+            </div>
+        @endif --}}
         <div class="sm:flex sm:items-center">
             <div class="sm:flex-auto">
                 <h1 class="text-xl font-semibold text-gray-900">Expense Details</h1>
@@ -98,10 +103,10 @@
 
                 saveForm(index) {
 
-                    let web_api = '/sample1';
+                    let web_api = '/expenses';
                     let response = fetch(web_api, {
                         method: 'POST',
-                        body: JSON.stringify(this.fails[index]),
+                        body: JSON.stringify(this.expenses[index]),
                         headers: {
                             'Content-Type': 'application/json',
                             'X-CSRF-TOKEN': document.head.querySelector('meta[name=csrf-token]').content
