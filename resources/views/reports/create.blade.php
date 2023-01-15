@@ -30,6 +30,10 @@
                 <livewire:live-installation />
             </div>
 
+            <!--Battery Details -->
+            <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
+                <livewire:live-battery />
+            </div>
 
             <!--Call Details Table -->
             <x-calldetails />

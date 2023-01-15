@@ -15,10 +15,10 @@
             <div class="mt-5 md:col-span-2 md:mt-0">
                 <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="first-name" class="block text-sm font-medium text-gray-700">First
+                        <label for="first-name" class="block text-sm font-medium text-gray-700">Company
                             name</label>
-                        <input type="text" wire:model="first_name" name="first_name" id="first-name"
-                            value="{{ old('first_name') }}" autocomplete="given-name"
+                        <input type="text" wire:model="company_name" name="company_name" id="company-name"
+                            value="{{ old('company_name') }}" autocomplete="given-name"
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                         @error('first_name')
                             <div class="text-red-500 text-xs">{{ $message }}</div>
@@ -26,21 +26,21 @@
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="last-name" class="block text-sm font-medium text-gray-700">Last
-                            name</label>
-                        <input type="text" wire:model="last_name" name="last_name" id="last-name"
-                            autocomplete="family-name" value="{{ old('last_name') }}"
+                        <label for="contact_name" class="block text-sm font-medium text-gray-700">Contact Person
+                            Name</label>
+                        <input type="text" wire:model="contact_name" name="contact_name" id="contact_name"
+                            value="{{ old('contact_name') }}"
                             class="mt-1
                             block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
                             focus:ring-indigo-500 sm:text-sm">
-                        @error('last_name')
+                        @error('contact_name')
                             <div class="text-red-500 text-xs">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="email-address" class="block text-sm font-medium text-gray-700">Email
-                            address</label>
+                        <label for="email-address" class="block text-sm font-medium text-gray-700">Contact Person Email
+                        </label>
                         <input type="text" wire:model="email_address" name="email_address" id="email-address"
                             value="{{ old('email_address') }}" autocomplete="email"
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
@@ -49,7 +49,7 @@
                         @enderror
                     </div>
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="mobile_no" class="block text-sm font-medium text-gray-700">Mobile
+                        <label for="mobile_no" class="block text-sm font-medium text-gray-700">Contact Mobile
                             Number</label>
                         <input type="text" wire:model="mobile_no" name="mobile_no" id="mobile_no"
                             value="{{ old('mobile_no') }}" autocomplete="mobile"
@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="col-span-6">
-                        <label for="street-address" class="block text-sm font-medium text-gray-700">Street
+                        <label for="street-address" class="block text-sm font-medium text-gray-700">Company Street
                             address</label>
                         <input type="text" wire:model="street_address" name="street_address" id="street-address"
                             value="{{ old('street_address') }}" autocomplete="street-address"
@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                        <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                        <label for="city" class="block text-sm font-medium text-gray-700"> Company City</label>
                         <input type="text" wire:model="city" name="city" id="city"
                             value="{{ old('city') }}" autocomplete="address-level2"
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
@@ -97,8 +97,8 @@
                     </div>
 
                     <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                        <label for="region" class="block text-sm font-medium text-gray-700">State /
-                            Province</label>
+                        <label for="region" class="block text-sm font-medium text-gray-700">Company State
+                        </label>
                         <input type="text" wire:model="region" name="region" id="region"
                             value="{{ old('region') }}" autocomplete="address-level1"
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">

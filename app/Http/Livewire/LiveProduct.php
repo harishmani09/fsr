@@ -8,23 +8,23 @@ use Livewire\Component;
 class LiveProduct extends Component
 {
 
+    public $product_name;
+    public $product_category;
     public $product_model;
-    public $product_rating;
-    public $product_serial;
-    public $product_part;
+    public $product_capacity;
     public $ip_address;
-    public $ctd_number;
+    public $product_status;
     public $fsb_number;
     public $product_series = "series_others";
     public $call_type = "call_others";
 
     protected $rules = [
-        'product_model' => 'required|max:255|min:2',
-        'product_rating' => 'required',
-        'product_serial' => 'required',
-        'product_part' => 'required',
+        'product_name' => 'required|max:255|min:2',
+        'product_category' => 'required',
+        'product_model' => 'required',
+        'product_capacity' => 'required',
         'ip_address' => 'required|',
-        'ctd_number' => 'required',
+        'product_status' => 'required',
         'fsb_number'  => 'required',
         'product_series' => 'required',
         'call_type' => 'required'

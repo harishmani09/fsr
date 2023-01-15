@@ -21,6 +21,18 @@
                     <div class="text-red-500 text-xs">{{ $message }}</div>
                 @enderror
             </div>
+            <div>
+                <label for="engineer-comment" class="block text-sm font-medium text-gray-700">Engineer's Observation
+                </label>
+                <div class="mt-1">
+                    <input type="text" wire:model="engineer_comment" name="engineer_comment" id="engineer-comment"
+                        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        placeholder="engineer's observation...">
+                </div>
+                @error('engineer_comment')
+                    <div class="text-red-500 text-xs">{{ $message }}</div>
+                @enderror
+            </div>
 
 
             <div>

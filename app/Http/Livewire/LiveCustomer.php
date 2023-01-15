@@ -8,8 +8,8 @@ use App\Models\Customer;
 class LiveCustomer extends Component
 {
 
-    public $first_name;
-    public $last_name;
+    public $company_name;
+    public $contact_name;
     public $email_address;
     public $mobile_no;
     public $country = 'india';
@@ -21,8 +21,8 @@ class LiveCustomer extends Component
 
 
     protected $rules = [
-        'first_name' => 'required',
-        'last_name' => 'required',
+        'company_name' => 'required',
+        'contact_name' => 'required',
         'email_address' => 'required|email|unique:customers,email_address',
         'mobile_no' => 'required|digits:10',
         'country' => 'required',

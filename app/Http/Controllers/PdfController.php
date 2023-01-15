@@ -46,7 +46,7 @@ class PdfController extends Controller
 
         Browsershot::html($html)
             ->showBackground()
-            ->margins(50, 10, 10, 10)
+            ->margins(0, 10, 10, 10)
             ->save($reportPath = storage_path('app/' . uniqid() . '.pdf'));
 
         Auth::user()->notify(new ReportCompleted($reportPath));

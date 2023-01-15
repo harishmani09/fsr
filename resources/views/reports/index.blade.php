@@ -64,523 +64,570 @@
                                         <div class="overflow-hidden bg-white shadow sm:rounded-lg">
                                             <div class="px-4 py-5 sm:px-6">
                                                 <div class=" text-lg font-medium leading-6 text-gray-900">
-                                                    Customer/Company Details</div>
+                                                    Customer Details
+                                                </div>
                                             </div>
-                                            <div class="flex justify-between border-t border-gray-200">
-                                                <dl>
-                                                    <div
-                                                        class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                        <dt class="text-sm font-medium text-gray-500">Customer/company
-                                                            Name</dt>
-                                                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                            name here</dd>
-                                                    </div>
-                                                    <div
-                                                        class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                        <dt class="text-sm font-medium text-gray-500">Company Address
-                                                        </dt>
-                                                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                            address here</dd>
-                                                    </div>
+                                            <div class="flex justify-between border-gray-200">
+                                                @foreach ($customers as $customer)
+                                                    <dl>
+                                                        <div
+                                                            class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-2 sm:px-6">
+                                                            <dt class=" text-sm font-medium text-gray-500">
+                                                                Company Name
+                                                            </dt>
+                                                            <dd
+                                                                class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                                {{ $customer->company_name }}</dd>
+                                                        </div>
+                                                        <div
+                                                            class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-2 sm:px-6">
+                                                            <dt class="text-sm font-medium text-gray-500">Company
+                                                                Address
+                                                            </dt>
+                                                            <dd
+                                                                class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                                {{ $customer->street_address }},{{ $customer->city }},{{ $customer->region }},Pin:{{ $customer->postal_code }},{{ $customer->country }}
+                                                            </dd>
+                                                        </div>
 
-                                                </dl>
-                                                <dl>
-                                                    <div
-                                                        class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                        <dt class="text-sm font-medium text-gray-500">Contact Person
-                                                            : </dt>
-                                                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                            name here</dd>
-                                                    </div>
-                                                    <div
-                                                        class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                        <dt class="text-sm font-medium text-gray-500">Contact Person
-                                                            Email: </dt>
-                                                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                            email here</dd>
-                                                    </div>
-                                                    <div
-                                                        class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                        <dt class="text-sm font-medium text-gray-500">Contact Person
-                                                            Phone: </dt>
-                                                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                            phone here</dd>
-                                                    </div>
+                                                    </dl>
+                                                    <dl>
+                                                        <div
+                                                            class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-1 sm:px-6">
+                                                            <dt class="text-sm font-medium text-gray-500">Contact Person
+                                                            </dt>
+                                                            <dd
+                                                                class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                                {{ $customer->contact_name }}</dd>
+                                                        </div>
+                                                        <div
+                                                            class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-1 sm:px-6">
+                                                            <dt class="text-sm font-medium text-gray-500">Contact
+                                                                Email </dt>
+                                                            <dd
+                                                                class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                                {{ $customer->email_address }}</dd>
+                                                        </div>
+                                                        <div
+                                                            class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-1 sm:px-6">
+                                                            <dt class="text-sm font-medium text-gray-500">Contact
+                                                                Phone </dt>
+                                                            <dd
+                                                                class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                                {{ $customer->mobile_no }}</dd>
+                                                        </div>
 
-                                                </dl>
-
+                                                    </dl>
+                                                @endforeach
                                             </div>
 
                                         </div>
                                         <!--Ticket Details  -->
-                                        <div class="border-l">
-                                            <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-                                                <div class="px-4 py-5 sm:px-6">
-                                                    <h3 class="text-lg font-medium leading-6 text-gray-900">Ticket
-                                                        Details</h3>
+                                        <div class="ml-2">
+                                            @foreach ($services as $service)
+                                                <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+                                                    <div class="px-4 py-5 sm:px-6">
+                                                        <h3 class=" text-lg font-medium leading-6 text-gray-900">
+                                                            Ticket
+                                                            Details</h3>
 
-                                                </div>
-                                                <div class="border-t border-gray-200">
-                                                    <dl>
-                                                        <div
-                                                            class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                            <dt class="text-sm font-medium text-gray-500">Ticket Id</dt>
-                                                            <dd
-                                                                class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                                Margot Foster</dd>
-                                                        </div>
-                                                        <div
-                                                            class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                            <dt class="text-sm font-medium text-gray-500">Call
-                                                                Date & Time</dt>
-                                                            <dd
-                                                                class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                                Backend Developer</dd>
-                                                        </div>
-                                                        <div
-                                                            class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                            <dt class="text-sm font-medium text-gray-500">Call Closed
-                                                                Date
-                                                            </dt>
-                                                            <dd
-                                                                class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                                margotfoster@example.com</dd>
-                                                        </div>
-                                                    </dl>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!--Complaint Details -->
-                                    <div class="flex border-t mt-2">
-                                        <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-                                            <dl>
+                                                    </div>
+                                                    <div class="border-t border-gray-200">
+                                                        <dl>
+                                                            <div
+                                                                class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                                <dt class="text-sm font-medium text-gray-500">Ticket Id
+                                                                </dt>
+                                                                <dd
+                                                                    class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                                    {{ $service->service_number }}</dd>
+                                                            </div>
+                                                            <div
+                                                                class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                                <dt class="text-sm font-medium text-gray-500">Call
+                                                                    Date & Time</dt>
+                                                                <dd
+                                                                    class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                                    {{ $service->order_time }}</dd>
+                                                            </div>
+                                            @endforeach
+                                            @foreach ($engineers as $engineer)
                                                 <div
                                                     class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                    <dt class="text-sm font-medium text-gray-500">Customer Complaint
+                                                    <dt class="text-sm font-medium text-gray-500">Call
+                                                        Closed
+                                                        Date
                                                     </dt>
                                                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                        complaint details</dd>
+                                                        {{ $engineer->signoff_date }}</dd>
                                                 </div>
+                                            @endforeach
                                             </dl>
                                         </div>
-                                        <div>
-                                            <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-                                                <dl>
-                                                    <div
-                                                        class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                        <dt class="text-sm font-medium text-gray-500">Call Category
-                                                        </dt>
-                                                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                            break down</dd>
-                                                    </div>
-                                                    <div
-                                                        class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                        <dt class="text-sm font-medium text-gray-500">Call Status
-                                                        </dt>
-                                                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                            completed</dd>
-                                                    </div>
-                                                </dl>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!--Complaint Details -->
+                            <div class="flex border-t mt-2">
+                                @foreach ($calls as $call)
+                                    <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+                                        <dl>
+                                            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                <dt class="text-sm font-medium text-gray-500">Customer Complaint
+                                                </dt>
+                                                <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                    {{ $call->complaint_details }}</dd>
                                             </div>
-                                        </div>
+                                        </dl>
                                     </div>
-
-                                    <!--Product Details -->
-                                    <div class="mt-2">
-                                        <div class="text-lg leading-6 font-medium">Product Details </div>
-
-                                        <div class="overflow-hidden shadow md:rounded-lg">
-                                            <table class="min-w-full divide-y divide-gray-300">
-                                                <thead class="bg-gray-50">
-                                                    <tr>
-                                                        <th scope="col"
-                                                            class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                                            Product Name</th>
-                                                        <th scope="col"
-                                                            class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                            Product Category</th>
-                                                        <th scope="col"
-                                                            class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                            Product Model</th>
-                                                        <th scope="col"
-                                                            class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                            Product Capacity</th>
-                                                        <th scope="col"
-                                                            class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                            Product Serial No.</th>
-                                                        <th scope="col"
-                                                            class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                                            Unit Working Satus</th>
-
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="bg-white">
-
-                                                    <tr>
-                                                        <td
-                                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                            ONLINE UPS</td>
-                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                            1PHASE/1PHASE</td>
-                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                            MF1110L16</td>
-                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                            10</td>
-                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                            R11D21H00131</td>
-                                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                            WORKING OK</td>
-
-                                                    </tr>
-
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <!--Service & Observation -->
-                                    <div class="mt-2">
-                                        <div class="text-lg leading-6 font-medium">Service & Observation </div>
-                                        <div class="overflow-hidden bg-white shadow sm:rounded-lg">
-                                            <dl>
+                                @endforeach
+                                <div>
+                                    <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+                                        <dl>
+                                            @foreach ($services as $service)
                                                 <div
                                                     class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                                    <dt class="text-sm font-medium text-gray-500">Observed Problem:
+                                                    <dt class="text-sm font-medium text-gray-500">Call Category
                                                     </dt>
-                                                    <dd
-                                                        class="border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                        ups power pcb, cantrol card and capacitor card are faulty</dd>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                        {{ $service->call_type }}</dd>
                                                 </div>
-                                            </dl>
+                                            @endforeach
+                                            @foreach ($calls as $call)
+                                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">Call Status
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                        {{ $call->call_status }}</dd>
+                                                </div>
+                                            @endforeach
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Product Details -->
+                            <div class="mt-2">
+                                <div class="text-lg leading-6 font-medium">Product Details </div>
+
+                                <div class="overflow-hidden shadow md:rounded-lg">
+                                    <table class="min-w-full divide-y divide-gray-300">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th scope="col"
+                                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                    Product Name</th>
+                                                <th scope="col"
+                                                    class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                    Product Category</th>
+                                                <th scope="col"
+                                                    class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                    Product Model</th>
+                                                <th scope="col"
+                                                    class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                    Product Capacity</th>
+                                                <th scope="col"
+                                                    class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                    Product Serial No.</th>
+                                                <th scope="col"
+                                                    class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                    Unit Working Satus</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white">
+                                            @foreach ($products as $product)
+                                                <tr>
+                                                    <td
+                                                        class="border-r whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                        {{ $product->product_name }}</td>
+                                                    <td
+                                                        class=" border-r whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                        {{ $product->product_category }}</td>
+                                                    <td
+                                                        class="border-r whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                        {{ $product->product_model }}</td>
+                                                    <td
+                                                        class="border-r whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                        {{ $product->product_capacity }}</td>
+                                                    <td
+                                                        class="border-r whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                        {{ $product->product_series }}</td>
+                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                        {{ $product->product_status }}</td>
+
+                                                </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!--Service & Observation -->
+                            <div class="mt-2">
+                                <div class="text-lg leading-6 font-medium">Service & Observation </div>
+                                <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+                                    @foreach ($feedbacks as $feedback)
+                                        <dl>
+                                            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                <dt class="text-sm font-medium text-gray-500">Observed Problem:
+                                                </dt>
+                                                <dd
+                                                    class="border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                    {{ $feedback->problem_desc }}</dd>
+                                            </div>
+                                        </dl>
+                                    @endforeach
+                                </div>
+                                <div class="mt-2 border-t overflow-hidden shadow md:rounded-lg">
+                                    <div class="grid grid-cols-3">
+                                        <div class="border-b border-r grid-rows-3">
+                                            <div class="border-b bg-gray-50">Input Current</div>
+                                            <div class=" grid grid-cols-3">
+                                                <div>a</div>
+                                                <div>b</div>
+                                                <div>c</div>
+                                            </div>
+                                            <div class=" grid grid-cols-3">
+                                                <div>p</div>
+                                                <div>q</div>
+                                                <div>r</div>
+                                            </div>
                                         </div>
-                                        <div class="mt-2 border-t overflow-hidden shadow md:rounded-lg">
-                                            <div class="grid grid-cols-3">
-                                                <div class="border-b border-r grid-rows-3">
-                                                    <div class="border-b">Input Current</div>
-                                                    <div class=" grid grid-cols-3">
-                                                        <div>a</div>
-                                                        <div>b</div>
-                                                        <div>c</div>
-                                                    </div>
-                                                    <div class=" grid grid-cols-3">
-                                                        <div>p</div>
-                                                        <div>q</div>
-                                                        <div>r</div>
-                                                    </div>
-                                                </div>
-                                                <div class=" border-b border-r grid-rows-3">
-                                                    <div class="border-b">Output Current</div>
-                                                    <div class=" grid grid-cols-2">
-                                                        <div>a</div>
-                                                        <div>b</div>
+                                        <div class=" border-b border-r grid-rows-3">
+                                            <div class="border-b bg-gray-50 ">Output Current</div>
+                                            <div class=" grid grid-cols-2">
+                                                <div>a</div>
+                                                <div>b</div>
 
-                                                    </div>
-                                                    <div class=" grid grid-cols-2">
-                                                        <div>p</div>
-                                                        <div>q</div>
-                                                    </div>
-                                                </div>
-                                                <div class=" border-b  grid-rows-3">
-                                                    <div class="border-b">Battery Current</div>
-                                                    <div class=" grid grid-cols-2">
-                                                        <div>Charging Current</div>
-                                                        <div>Discharge Current</div>
+                                            </div>
+                                            <div class=" grid grid-cols-2">
+                                                <div>p</div>
+                                                <div>q</div>
+                                            </div>
+                                        </div>
+                                        <div class=" border-b  grid-rows-3">
+                                            <div class="border-b bg-gray-50">Battery Current</div>
+                                            <div class=" grid grid-cols-2">
+                                                <div>Charging Current</div>
+                                                <div>Discharge Current</div>
 
-                                                    </div>
-                                                    <div class=" grid grid-cols-2">
-                                                        <div>p</div>
-                                                        <div>q</div>
-                                                    </div>
+                                            </div>
+                                            <div class=" grid grid-cols-2">
+                                                <div>p</div>
+                                                <div>q</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-3">
+                                        <div class=" border-b border-r grid-rows-3">
+                                            <div class="bg-gray-50">Input Voltage</div>
+                                            <div class=" border-t grid grid-cols-2">
+                                                <div>L-N</div>
+                                                <div>E-N</div>
+
+                                            </div>
+                                            <div class=" grid grid-cols-2">
+                                                <div>p</div>
+                                                <div>q</div>
+
+                                            </div>
+                                        </div>
+                                        <div class=" border-b border-r grid-rows-3">
+                                            <div class="bg-gray-50">Output Voltage</div>
+                                            <div class="border-t grid grid-cols-2">
+                                                <div>L-N</div>
+                                                <div>E-N</div>
+
+                                            </div>
+                                            <div class=" grid grid-cols-2">
+                                                <div>p</div>
+                                                <div>q</div>
+                                            </div>
+                                        </div>
+                                        <div class=" border-b grid-rows-3">
+                                            <div class="bg-gray-50">Battery Voltage</div>
+                                            <div class="border-t grid grid-cols-2">
+                                                <div class="border-r">Charging Voltage</div>
+                                                <div>Discharge Voltage after 3-5 Min</div>
+
+                                            </div>
+                                            <div class=" grid grid-cols-2">
+                                                <div class="border-r">p</div>
+                                                <div>q</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-3">
+                                        <div class="grid-rows-3 border-r">
+                                            <div class="bg-gray-50">Frequency</div>
+                                            <div class=" border-t grid grid-cols-2">
+                                                <div class="border-r border-b">I/O</div>
+                                                <div class="border-r border-b">O/P</div>
+
+                                            </div>
+                                            <div class=" grid grid-cols-2">
+                                                <div>50</div>
+                                                <div>50</div>
+                                            </div>
+                                        </div>
+                                        <div class="grid-rows-3 border-r">
+                                            <div class="bg-gray-50 ">
+                                                Display Information</div>
+                                            <div class="border-t grid grid-cols-2">
+                                                <div class="border-r border-b">Error Code With Description
+                                                </div>
+                                                <div class="border-r border-b">Load %</div>
+
+                                            </div>
+                                            <div class=" grid grid-cols-2">
+                                                <div>50</div>
+                                                <div>50</div>
+                                            </div>
+                                        </div>
+                                        <div class="  grid-rows-2">
+                                            <div class="bg-gray-50">Other Fault observation if any</div>
+                                            <div class="border-t">no</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="mt-2 border-y">
+                                            <h3 class="border-b">Battery Test Report</h3>
+                                            <div class="grid grid-cols-5 border-b">
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b bg-gray-50">Battery Make:</div>
+                                                    <div>Quanta</div>
+                                                </div>
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b bg-gray-50">Battery Model:</div>
+                                                    <div>SMF</div>
+                                                </div>
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b bg-gray-50">Battery AH:</div>
+                                                    <div>26</div>
+                                                </div>
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b bg-gray-50">Nos of Bank:</div>
+                                                    <div>1</div>
+                                                </div>
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b bg-gray-50">Ambient Temperature:</div>
+                                                    <div>0</div>
                                                 </div>
                                             </div>
-                                            <div class="grid grid-cols-3">
-                                                <div class=" border-b border-r grid-rows-3">
-                                                    <div>Input Voltage</div>
-                                                    <div class=" border-t grid grid-cols-2">
-                                                        <div>L-N</div>
-                                                        <div>E-N</div>
-
-                                                    </div>
-                                                    <div class=" grid grid-cols-2">
-                                                        <div>p</div>
-                                                        <div>q</div>
-
-                                                    </div>
+                                            <div class="grid grid-cols-5 mt-2 border-y">
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b bg-gray-50">Installed Battery Position
+                                                        from +(VE)</div>
+                                                    <div>Quanta</div>
                                                 </div>
-                                                <div class=" border-b border-r grid-rows-3">
-                                                    <div>Output Voltage</div>
-                                                    <div class="border-t grid grid-cols-2">
-                                                        <div>L-N</div>
-                                                        <div>E-N</div>
-
-                                                    </div>
-                                                    <div class=" grid grid-cols-2">
-                                                        <div>p</div>
-                                                        <div>q</div>
-                                                    </div>
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b bg-gray-50">Batch Code</div>
+                                                    <div>Quanta</div>
                                                 </div>
-                                                <div class=" border-b grid-rows-3">
-                                                    <div>Battery Voltage</div>
-                                                    <div class="border-t grid grid-cols-2">
-                                                        <div>Charging Voltage</div>
-                                                        <div>Discharge Voltage after 3-5 Min</div>
-
-                                                    </div>
-                                                    <div class=" grid grid-cols-2">
-                                                        <div>p</div>
-                                                        <div>q</div>
-                                                    </div>
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b bg-gray-50">Serial No</div>
+                                                    <div>Quanta</div>
+                                                </div>
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b bg-gray-50">Charging Voltage</div>
+                                                    <div>Quanta</div>
+                                                </div>
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b bg-gray-50">
+                                                        Battery
+                                                        Voltage</div>
+                                                    <div>Quanta</div>
                                                 </div>
                                             </div>
-                                            <div class="grid grid-cols-3">
-                                                <div class="grid-rows-3 border-r">
-                                                    <div>Frequency</div>
-                                                    <div class=" border-t grid grid-cols-2">
-                                                        <div>I/O</div>
-                                                        <div>O/P</div>
-
+                                            <div class="grid grid-cols-[4fr_1.1fr_1fr_1fr_1.5fr]  mt-2 border-y">
+                                                <div class="grid-rows-2 ">
+                                                    <div class="border-b bg-gray-50">Battery Voltage during
+                                                        Discharging
                                                     </div>
-                                                    <div class=" grid grid-cols-2">
-                                                        <div>50</div>
-                                                        <div>50</div>
-                                                    </div>
-                                                </div>
-                                                <div class="grid-rows-3 border-r">
-                                                    <div>
-                                                        Display Information</div>
-                                                    <div class="border-t grid grid-cols-2">
-                                                        <div>Error Code With Description</div>
-                                                        <div>Load %</div>
-
-                                                    </div>
-                                                    <div class=" grid grid-cols-2">
-                                                        <div>50</div>
-                                                        <div>50</div>
-                                                    </div>
-                                                </div>
-                                                <div class="  grid-rows-2">
-                                                    <div>Other Fault observation if any</div>
-                                                    <div class="border-t">no</div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="mt-2 border-y">
-                                                    <h3 class="border-b">Battery Test Report</h3>
-                                                    <div class="grid grid-cols-5 border-b">
-                                                        <div class="grid-rows-2 border-r">
-                                                            <div class="border-b bg-gray-50">Battery Make:</div>
-                                                            <div>Quanta</div>
-                                                        </div>
-                                                        <div class="grid-rows-2 border-r">
-                                                            <div class="border-b bg-gray-50">Battery Model:</div>
-                                                            <div>SMF</div>
-                                                        </div>
-                                                        <div class="grid-rows-2 border-r">
-                                                            <div class="border-b bg-gray-50">Battery AH:</div>
-                                                            <div>26</div>
-                                                        </div>
-                                                        <div class="grid-rows-2 border-r">
-                                                            <div class="border-b bg-gray-50">Nos of Bank:</div>
-                                                            <div>1</div>
-                                                        </div>
-                                                        <div class="grid-rows-2 border-r">
-                                                            <div class="border-b bg-gray-50">Ambient Temperature:</div>
-                                                            <div>0</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="grid grid-cols-5 mt-2 border-y">
-                                                        <div class="grid-rows-2 border-r">
-                                                            <div class="border-b bg-gray-50">Installed Battery Position
-                                                                from +(VE)</div>
-                                                            <div>Quanta</div>
-                                                        </div>
-                                                        <div class="grid-rows-2 border-r">
-                                                            <div class="border-b bg-gray-50">Batch Code</div>
-                                                            <div>Quanta</div>
-                                                        </div>
-                                                        <div class="grid-rows-2 border-r">
-                                                            <div class="border-b bg-gray-50">Serial No</div>
-                                                            <div>Quanta</div>
-                                                        </div>
-                                                        <div class="grid-rows-2 border-r">
-                                                            <div class="border-b bg-gray-50">Charging Voltage</div>
-                                                            <div>Quanta</div>
-                                                        </div>
-                                                        <div class="grid-rows-2 border-r">
-                                                            <div class="border-b bg-gray-50">
-                                                                Battery
-                                                                Voltage</div>
-                                                            <div>Quanta</div>
-                                                        </div>
-                                                    </div>
-                                                    <div
-                                                        class="grid grid-cols-[4fr_1.1fr_1fr_1fr_1.5fr]  mt-2 border-y">
-                                                        <div class="grid-rows-2 ">
-                                                            <div class="border-b bg-gray-50">Battery Voltage during
-                                                                Discharging
-                                                            </div>
-                                                            <div class="grid grid-cols-5">
-                                                                <div class="grid-rows-2">
-                                                                    <div>After 2 Mins</div>
-                                                                    <div>ok</div>
-                                                                </div>
-                                                                <div class="grid-rows-2">
-                                                                    <div>After 5 Mins</div>
-                                                                    <div>ok</div>
-                                                                </div>
-                                                                <div class="grid-rows-2">
-                                                                    <div>After 10 Mins</div>
-                                                                    <div>ok</div>
-                                                                </div>
-                                                                <div class="grid-rows-2">
-                                                                    <div>After 20 Mins</div>
-                                                                    <div>ok</div>
-                                                                </div>
-                                                                <div class="grid-rows-2">
-                                                                    <div class="text-xs">Battery Low/Before Cut off
-                                                                    </div>
-                                                                    <div>ok</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    <div class="border-r grid grid-cols-5">
                                                         <div class="grid-rows-2">
-                                                            <div class="border-b text-md bg-gray-50">Battery Status
-                                                            </div>
+                                                            <div class="text-xs">After 2 Mins</div>
                                                             <div>ok</div>
                                                         </div>
                                                         <div class="grid-rows-2">
-                                                            <div class="border-b bg-gray-50">Total Voltage</div>
-                                                            <div>243</div>
+                                                            <div class="text-xs">After 5 Mins</div>
+                                                            <div>ok</div>
                                                         </div>
                                                         <div class="grid-rows-2">
-                                                            <div class="border-b bg-gray-50">Total Current</div>
-                                                            <div>26</div>
+                                                            <div class="text-xs">After 10 Mins</div>
+                                                            <div>ok</div>
                                                         </div>
                                                         <div class="grid-rows-2">
-                                                            <div class="border-b text-sm bg-gray-50">Connected Load
-                                                                Details</div>
-                                                            <div>Lorem ipsum dolor sit amet.</div>
+                                                            <div class="text-xs">After 20 Mins</div>
+                                                            <div>ok</div>
+                                                        </div>
+                                                        <div class="grid-rows-2">
+                                                            <div class="text-xs">Battery Low/Before Cut off
+                                                            </div>
+                                                            <div>ok</div>
                                                         </div>
                                                     </div>
-
+                                                </div>
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b text-md bg-gray-50">Battery Status
+                                                    </div>
+                                                    <div>ok</div>
+                                                </div>
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b bg-gray-50">Total Voltage</div>
+                                                    <div>243</div>
+                                                </div>
+                                                <div class="grid-rows-2 border-r">
+                                                    <div class="border-b bg-gray-50">Total Current</div>
+                                                    <div>26</div>
+                                                </div>
+                                                <div class="grid-rows-2">
+                                                    <div class="border-b text-sm bg-gray-50">Connected Load
+                                                        Details</div>
+                                                    <div>Lorem ipsum dolor sit amet.</div>
                                                 </div>
                                             </div>
-                                            <div>
-                                                <dl>
-                                                    <div class="flex bg-gray-50 px-4 py-5">
-                                                        <dt class="text-sm font-medium text-gray-500">Engineer Remarks
-                                                            on failure conclusion / Root Cause</dt>
-                                                        <dd
-                                                            class="pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. A,
-                                                            tempora! Nemo, cum similique. Rem voluptas quibusdam harum
-                                                            veniam quaerat similique nemo maxime eius, quos incidunt?
-                                                        </dd>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                            <div>
-                                                <dl>
-                                                    <div class="flex bg-gray-50 px-4 py-5">
-                                                        <dt class="text-sm font-medium text-gray-500">Replaced Spares
-                                                            if Any:</dt>
-                                                        <dd
-                                                            class="pl-2 first:border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                            ups power pcb, cantrol card and capacitor card are faulty
-                                                        </dd>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                            <div>
-                                                <dl>
-                                                    <div class="flex bg-gray-50 px-4 py-5">
-                                                        <dt class="text-sm font-medium text-gray-500">Required Spares
-                                                            if Any:</dt>
-                                                        <dd
-                                                            class=" pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                            no
-                                                        </dd>
-                                                    </div>
-                                                </dl>
-                                            </div>
-                                            <div>
-                                                <dl>
-                                                    <div class="flex bg-gray-50 px-4 py-5">
-                                                        <dt class="text-sm font-medium text-gray-500">Customer Name
-                                                        </dt>
-                                                        <dd
-                                                            class=" pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                            Customer Remarks
-                                                        </dd>
-                                                    </div>
-                                                </dl>
-                                            </div>
+
                                         </div>
                                     </div>
-
-                                    <!--Service Images -->
-                                    <div class="mt-6 border-y">
-                                        <div class="text-xl mb-6 leading-6 font-semibold text-gray-900">Service Images
-                                        </div>
-                                        <div class="grid grid-cols-4 gap-4 ">
-                                            <div>
-                                                <div> Serial No. Picture</div>
-                                                <img class=" gap-4" src="https://placeimg.com/200/250/nature?1" />
-                                            </div>
-                                            <div>
-                                                <div> Display Picture</div>
-                                                <img class=" gap-4" src="https://placeimg.com/200/250/nature?2" />
-                                            </div>
-                                            <div>
-                                                <div>
-                                                    Terminal Block Pucture</div>
-                                                <img class=" gap-4" src="https://placeimg.com/200/250/nature?3" />
-                                            </div>
-                                            <div>
-                                                <div> Battery Bank Picture</div>
-                                                <img class=" gap-4" src="https://placeimg.com/200/250/nature?4" />
-                                            </div>
-                                            <div>
-                                                <div> Faulty PCB/Spares/Section Picture</div>
-                                                <img class=" gap-4" src="https://placeimg.com/200/250/nature?5" />
-                                            </div>
-                                            <div>
-                                                <div>Faulty PCB/Spares Barcode Picture</div>
-                                                <img class=" gap-4" src="https://placeimg.com/200/250/nature?6" />
-                                            </div>
-                                            <div>
-                                                <div> Faulty PCB/Spares Barcode Picture</div>
-                                                <img class=" gap-4" src="https://placeimg.com/200/250/nature?7" />
-                                            </div>
-                                            <div>
-                                                <div> Equipments Installation Position Picture</div>
-                                                <img class=" gap-4" src="https://placeimg.com/200/250/nature?8" />
-                                            </div>
-                                            <div>
-                                                <div> Customer Picture</div>
-                                                <img class=" gap-4" src="https://placeimg.com/200/250/nature?9" />
-                                            </div>
-                                            <div>
-                                                <div> Customer Name & Sign</div>
-                                                <img class=" gap-4" src="https://placeimg.com/200/250/nature?10" />
-                                            </div>
-                                            <div>
-                                                <div> ngineer Picture</div>
-                                                <img class=" gap-4" src="https://placeimg.com/200/250/nature?11" />
-                                            </div>
-                                            <div>
-                                                <div> Engineer Name & Sign</div>
-                                                <img class=" gap-4" src="https://placeimg.com/200/250/nature?12" />
-                                            </div>
-
-                                        </div>
+                                    <div>
+                                        <dl>
+                                            @foreach ($engineers as $engineer)
+                                                <div class="flex bg-gray-50 px-4 py-5">
+                                                    <dt class="text-sm font-medium text-gray-500">Engineer Remarks
+                                                        on failure conclusion / Root Cause</dt>
+                                                    <dd
+                                                        class="pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                        {{ $engineer->engineer_comment }}
+                                                    </dd>
+                                                </div>
+                                            @endforeach
+                                        </dl>
+                                    </div>
+                                    <div class="border-y">
+                                        <dl>
+                                            @foreach ($partsReplacement as $partReplacement)
+                                                <div class="flex bg-gray-50 px-4 py-5">
+                                                    <dt class=" pr-2 text-sm font-medium text-gray-500">
+                                                        Replaced
+                                                        Spares
+                                                        if Any</dt>
+                                                    <dd
+                                                        class="pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                        {{ $partReplacement->part_description }}
+                                                    </dd>
+                                                </div>
+                                            @endforeach
+                                        </dl>
+                                    </div>
+                                    <div class="border-y">
+                                        <dl>
+                                            @foreach ($partsFailed as $partFailed)
+                                                <div class="flex bg-gray-50 px-4 py-5">
+                                                    <dt class="pr-2 text-sm font-medium text-gray-500">Required
+                                                        Spares
+                                                        if Any</dt>
+                                                    <dd
+                                                        class=" pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                        {{ $partFailed->failed_part_desc }}
+                                                    </dd>
+                                                </div>
+                                            @endforeach
+                                        </dl>
+                                    </div>
+                                    <div class="border-y">
+                                        @foreach ($feedbacks as $feedback)
+                                            <dl>
+                                                <div class="flex bg-gray-50 px-4 py-5">
+                                                    <dt class="pr-2 text-sm font-medium text-gray-500">Customer
+                                                        Remarks
+                                                    </dt>
+                                                    <dd
+                                                        class=" pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                        {{ $feedback->general_feedback }}
+                                                    </dd>
+                                                </div>
+                                            </dl>
+                                        @endforeach
                                     </div>
                                 </div>
+                            </div>
 
-                                {{-- <div class="md:grid md:grid-cols-3 md:gap-6">
+                            <!--Service Images -->
+                            <div class="mt-6 border-y">
+                                <div class="text-xl mb-6 leading-6 font-semibold text-gray-900">Service Images
+                                </div>
+                                <div class="grid grid-cols-4 gap-4 ">
+                                    <div>
+                                        <div> Serial No. Picture</div>
+                                        <img class=" gap-4" src="https://placeimg.com/200/250/nature?1" />
+                                        <div>timestamp</div>
+                                    </div>
+                                    <div>
+                                        <div> Display Picture</div>
+                                        <img class=" gap-4" src="https://placeimg.com/200/250/nature?2" />
+                                        <div>timestamp</div>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            Terminal Block Pucture</div>
+                                        <img class=" gap-4" src="https://placeimg.com/200/250/nature?3" />
+                                        <div>timestamp</div>
+                                    </div>
+                                    <div>
+                                        <div> Battery Bank Picture</div>
+                                        <img class=" gap-4" src="https://placeimg.com/200/250/nature?4" />
+                                        <div>timestamp</div>
+                                    </div>
+                                    <div>
+                                        <div> Faulty PCB/Spares/Section Picture</div>
+                                        <img class=" gap-4" src="https://placeimg.com/200/250/nature?5" />
+                                    </div>
+                                    <div>
+                                        <div>Faulty PCB/Spares Barcode Picture</div>
+                                        <img class=" gap-4" src="https://placeimg.com/200/250/nature?6" />
+                                        <div>timestamp</div>
+                                    </div>
+                                    <div>
+                                        <div> Faulty PCB/Spares Barcode Picture</div>
+                                        <img class=" gap-4" src="https://placeimg.com/200/250/nature?7" />
+                                        <div>timestamp</div>
+                                    </div>
+                                    <div>
+                                        <div> Equipments Installation Position Picture</div>
+                                        <img class=" gap-4" src="https://placeimg.com/200/250/nature?8" />
+                                        <div>timestamp</div>
+                                    </div>
+                                    <div>
+                                        <div> Customer Picture</div>
+                                        <img class=" gap-4" src="https://placeimg.com/200/250/nature?9" />
+                                        <div>timestamp</div>
+                                    </div>
+                                    <div>
+                                        <div> Customer Name & Sign</div>
+                                        <img class=" gap-4" src="https://placeimg.com/200/250/nature?10" />
+                                        <div>timestamp</div>
+                                    </div>
+                                    <div>
+                                        <div> ngineer Picture</div>
+                                        <img class=" gap-4" src="https://placeimg.com/200/250/nature?11" />
+                                        <div>timestamp</div>
+                                    </div>
+                                    <div>
+                                        <div> Engineer Name & Sign</div>
+                                        <img class=" gap-4" src="https://placeimg.com/200/250/nature?12" />
+                                        <div>timestamp</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                    </div>
+
+                    {{-- <div class="md:grid md:grid-cols-3 md:gap-6">
                                         <div class="md:col-span-1">
                                             <h3 class="text-lg font-medium leading-6 text-gray-900">Service Provider
                                                 Details
@@ -754,8 +801,8 @@
 
 
 
-                                <!--Product Details  -->
-                                {{-- <div
+                    <!--Product Details  -->
+                    {{-- <div
                                         class="bg-white
                                             px-4 py-5 shadow sm:rounded-lg sm:p-6">
 
@@ -989,8 +1036,8 @@
                                     </div> --}}
 
 
-                                <!--Customer Information -->
-                                {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
+                    <!--Customer Information -->
+                    {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
 
 
                                         <div class="md:grid md:grid-cols-3 md:gap-6">
@@ -1087,8 +1134,8 @@
 
                                     </div> --}}
 
-                                <!--Site Information -->
-                                {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
+                    <!--Site Information -->
+                    {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
                                         <div class="md:grid md:grid-cols-3 md:gap-6">
                                             <div class="md:col-span-1">
                                                 <h3 class="text-lg font-medium leading-6 text-gray-900">Site Details
@@ -1487,8 +1534,8 @@
 
                                     </div> --}}
 
-                                <!--Installation Details -->
-                                {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
+                    <!--Installation Details -->
+                    {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
                                         <div class="md:grid md:grid-cols-3 md:gap-6">
                                             <div class="md:col-span-1">
                                                 <h3 class="text-lg font-medium leading-6 text-gray-900">Installation
@@ -1556,8 +1603,8 @@
                                     </div> --}}
 
 
-                                <!--Call Details Table -->
-                                {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                    <!--Call Details Table -->
+                    {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
 
                                         <div>
                                             <div class="sm:flex sm:items-center">
@@ -1655,8 +1702,8 @@
 
                                     </div> --}}
 
-                                <!--Customer Feedback -->
-                                {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                    <!--Customer Feedback -->
+                    {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
                                     @foreach ($feedbacks as $feedback)
                                         <div class="sm:flex sm:items-center">
                                             <div class="sm:flex-auto">
@@ -2023,8 +2070,8 @@
                                 </div> --}}
 
 
-                                <!--Part Replacement Feedback -->
-                                {{-- <div x-data class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                    <!--Part Replacement Feedback -->
+                    {{-- <div x-data class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
                                         <div class="sm:flex sm:items-center">
                                             <div class="sm:flex-auto">
                                                 <h1 class="text-xl font-semibold text-gray-900">Part Replacement
@@ -2100,8 +2147,8 @@
 
                                     </div> --}}
 
-                                <!--Part Failed Feedback -->
-                                {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                    <!--Part Failed Feedback -->
+                    {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
                                         <div class="sm:flex sm:items-center">
                                             <div class="sm:flex-auto">
                                                 <h1 class="text-xl font-semibold text-gray-900">Parts Failed Details
@@ -2200,8 +2247,8 @@
 
                                     </div> --}}
 
-                                <!--Call SignOff  -->
-                                {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
+                    <!--Call SignOff  -->
+                    {{-- <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6 sm:px-6 lg:px-8">
 
 
                                         <div class="sm:flex sm:items-center">
@@ -2356,13 +2403,13 @@
                                     </div> --}}
 
 
-                        </main>
-
-                    </div>
-
+                    </main>
 
                 </div>
+
+
             </div>
         </div>
+    </div>
     </div>
 </x-app-layout>

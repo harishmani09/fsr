@@ -18,47 +18,47 @@
                 <div class="">
                     <!--Parameter 1:Service Provider Details -->
                     <div class="grid grid-cols-2 items-center">
-                        <div>Product Model:</div>
+                        <div>Product Name:</div>
 
                         <div class="bg-gray-400">
-                            <input type="text" class="w-72" wire:model="product_model"
-                                value="{{ old('product_model') }}" id="product_model"
-                                placeholder="enter product name..." />
+                            <input type="text" class="w-72" wire:model="product_name"
+                                value="{{ old('product_name') }}" id="product_name"
+                                placeholder="enter product mode..." />
+                        </div>
+                        @error('product_name')
+                            <div class="text-red-500 text-xs">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="grid grid-cols-2 items-center">
+                        <div>Product Category:</div>
+
+                        <div>
+                            <input type="text" class="w-72" wire:model="product_category" id=""
+                                value="{{ old('product_category') }}" placeholder="enter product category..." />
+                        </div>
+                        @error('product_category')
+                            <div class="text-red-500 text-xs">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="grid grid-cols-2 items-center">
+                        <div>Product Model:</div>
+
+                        <div>
+                            <input type="text" pattern="[a-zA-Z0-9_\-]+" class="w-72" wire:model="product_model"
+                                id="product_model" value="{{ old('product_model') }}" />
                         </div>
                         @error('product_model')
                             <div class="text-red-500 text-xs">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="grid grid-cols-2 items-center">
-                        <div>Product Rating:</div>
+                        <div>Product Capacity:</div>
 
                         <div>
-                            <input type="text" class="w-72" wire:model="product_rating" id=""
-                                value="{{ old('product_rating') }}" placeholder="enter product rating..." />
+                            <input type="text" pattern="[a-zA-Z0-9_\-]+" class="w-72" wire:model="product_capacity"
+                                id="product_capacity" value="{{ old('product_capacity') }}" />
                         </div>
-                        @error('product_rating')
-                            <div class="text-red-500 text-xs">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="grid grid-cols-2 items-center">
-                        <div>Product Serial Number:</div>
-
-                        <div>
-                            <input type="text" pattern="[a-zA-Z0-9_\-]+" class="w-72" wire:model="product_serial"
-                                id="product_serial" value="{{ old('product_serial') }}" />
-                        </div>
-                        @error('product_serial')
-                            <div class="text-red-500 text-xs">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="grid grid-cols-2 items-center">
-                        <div>Product Part Number:</div>
-
-                        <div>
-                            <input type="text" pattern="[a-zA-Z0-9_\-]+" class="w-72" wire:model="product_part"
-                                id="product_part" value="{{ old('product_part') }}" />
-                        </div>
-                        @error('product_part')
+                        @error('product_capacity')
                             <div class="text-red-500 text-xs">{{ $message }}</div>
                         @enderror
                     </div>
@@ -74,12 +74,12 @@
                         @enderror
                     </div>
                     <div class="grid grid-cols-2 items-center">
-                        <div>CTD Number:</div>
+                        <div>Product Status:</div>
 
                         <div>
-                            <input type="text" class="w-72" wire:model="ctd_number" />
+                            <input type="text" class="w-72" wire:model="product_status" />
                         </div>
-                        @error('ctd_number')
+                        @error('product_status')
                             <div class="text-red-500 text-xs">{{ $message }}</div>
                         @enderror
                     </div>
