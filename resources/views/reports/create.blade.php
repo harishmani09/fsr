@@ -25,10 +25,7 @@
                 <livewire:live-site />
             </div>
 
-            <!--Installation Details -->
-            <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">
-                <livewire:live-installation />
-            </div>
+
 
             <!--Battery Details -->
             <div class="bg-white px-4 py-5 shadow sm:rounded-lg sm:p-6">

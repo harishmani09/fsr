@@ -76,7 +76,10 @@
                             <h4 class="font-semibold text-sm">Capacity?</h4>
                             <label for="kva" class="block text-sm font-medium text-gray-700">In
                                 kVA</label>
-                            <div class="mt-1 border-b border-gray-300 focus-within:border-indigo-600">
+                            <div
+                                class="mt-1
+                            block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                            focus:ring-indigo-500 sm:text-sm">
                                 <input type="text" wire:model="kva" id="kva"
                                     class="block w-full border-0 border-b border-transparent bg-gray-50 focus:border-indigo-600 focus:ring-0 sm:text-sm">
                             </div>
@@ -123,7 +126,7 @@
 
                     </div>
                     <!--Parameter 4: Voltage Details -->
-                    <div class="grid grid-cols-6 gap-2 mb-8">
+                    {{-- <div class="grid grid-cols-6 gap-2 mb-8">
                         <h4 class="pb-0 sm:col-span-6 font-semibold text-md">Voltage Details</h4>
                         <div class="mt-0 sm:col-span-6">
                             <label class="text-base font-medium text-gray-900">Electricity
@@ -238,7 +241,7 @@
                             </fieldset>
                         </div>
 
-                    </div>
+                    </div> --}}
                     <!--Parameter 5:Load Type -->
                     <div class="grid grid-cols-6 gap-2">
                         <h4 class="pb-0 sm:col-span-6 font-semibold text-md">Load Type</h4>

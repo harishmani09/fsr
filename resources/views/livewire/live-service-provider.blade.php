@@ -11,9 +11,13 @@
             <div class="md:grid md:grid-cols-2 w-full md:gap-6">
 
                 <h3 class="text-lg font-medium leading-6 text-gray-900">Service Order Number</h3>
-                <div class="border-0">
-                    <input class="w-72 border-transparent bg-gray-100" wire:model="service_number" name="service_number"
-                        id="" value="{{ old('service_number') }}" />
+                <div class=" mb-4">
+                    <input
+                        class=" mt-1
+                    block w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-500
+                    focus:ring-indigo-500 sm:text-sm"
+                        wire:model="service_number" name="service_number" id=""
+                        value="{{ old('service_number') }}" />
 
                 </div>
                 @error('service_number')
@@ -25,7 +29,11 @@
                 <h3 class="  text-lg font-medium leading-6 text-gray-900">Call Date & Time
                 </h3>
                 <div>
-                    <input class="border-transparent" type="datetime-local" wire:model="order_time" name="order_time"
+                    <input
+                        class="border-transparent mt-1
+                    block w-full rounded-md border-gray-500 shadow-sm focus:border-indigo-500
+                    focus:ring-indigo-500 sm:text-sm"
+                        type="datetime-local" wire:model="order_time" name="order_time"
                         value="{{ old('order_time') }}" />
                 </div>
                 @error('order_time')
@@ -51,7 +59,11 @@
                             <div>Service Provider Name:</div>
 
                             <div>
-                                <textarea class="w-72" wire:model="service_provider" id="" cols="30" rows="1">{{ old('service_provider') }}</textarea>
+                                <textarea
+                                    class="w-full mt-1
+                                block rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                                focus:ring-indigo-500 sm:text-sm"
+                                    wire:model="service_provider" id="" cols="30" rows="1">{{ old('service_provider') }}</textarea>
                             </div>
                             @error('service_provider')
                                 <div class="text-red-500 text-xs">{{ $message }}</div>

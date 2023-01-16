@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('installations', function (Blueprint $table) {
-            $table->id();
-            $table->string('volt_install');
-            $table->string('make_install');
-            $table->string('quantity_install');
-            $table->string('strings_install');
-            $table->string('batch_code');
-            $table->timestamps();
+        Schema::table('installations', function (Blueprint $table) {
+            Schema::dropIfExists('installations');
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('installations');
+        Schema::table('installations', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -312,8 +312,11 @@
             <div class=" grid grid-cols-2 items-center">
                 <div class="">Problem Observation</div>
                 <div>
-                    <textarea class="w-96" wire:model="problem_desc" name="problem_desc" id="" cols="30"
-                        rows="2"></textarea>
+                    <textarea
+                        class="mt-1
+                    block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                    focus:ring-indigo-500 sm:text-sm"
+                        class="w-96" wire:model="problem_desc" name="problem_desc" id="" cols="30" rows="2"></textarea>
                 </div>
                 @error('problem_desc')
                     <div class="text-red-500 text-xs">{{ $message }}</div>
@@ -322,8 +325,11 @@
             <div class="grid grid-cols-2 items-center">
                 <div>Action Taken</div>
                 <div>
-                    <textarea class="w-96" wire:model="action_taken" name="action_taken" id="" cols="30"
-                        rows="2"></textarea>
+                    <textarea
+                        class="mt-1
+                    block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                    focus:ring-indigo-500 sm:text-sm"
+                        wire:model="action_taken" name="action_taken" id="" cols="30" rows="2"></textarea>
                 </div>
                 @error('action_taken')
                     <div class="text-red-500 text-xs">{{ $message }}</div>
@@ -332,8 +338,11 @@
             <div class="grid grid-cols-2 items-center">
                 <div>General Feedback</div>
                 <div>
-                    <textarea class="w-96" wire:model="general_feedback" name="general_feedback" id="" cols="30"
-                        rows="2"></textarea>
+                    <textarea
+                        class="mt-1
+                    block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                    focus:ring-indigo-500 sm:text-sm"
+                        wire:model="general_feedback" name="general_feedback" id="" cols="30" rows="2"></textarea>
                 </div>
                 @error('general_feedback')
                     <div class="text-red-500 text-xs">{{ $message }}</div>

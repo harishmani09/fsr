@@ -21,8 +21,11 @@
                         <div>Product Name:</div>
 
                         <div class="bg-gray-400">
-                            <input type="text" class="w-72" wire:model="product_name"
-                                value="{{ old('product_name') }}" id="product_name"
+                            <input type="text"
+                                class="mt-1
+                            block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                            focus:ring-indigo-500 sm:text-sm"
+                                wire:model="product_name" value="{{ old('product_name') }}" id="product_name"
                                 placeholder="enter product mode..." />
                         </div>
                         @error('product_name')
@@ -33,8 +36,12 @@
                         <div>Product Category:</div>
 
                         <div>
-                            <input type="text" class="w-72" wire:model="product_category" id=""
-                                value="{{ old('product_category') }}" placeholder="enter product category..." />
+                            <input type="text"
+                                class="mt-1
+                            block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                            focus:ring-indigo-500 sm:text-sm"
+                                wire:model="product_category" id="" value="{{ old('product_category') }}"
+                                placeholder="enter product category..." />
                         </div>
                         @error('product_category')
                             <div class="text-red-500 text-xs">{{ $message }}</div>
@@ -44,8 +51,11 @@
                         <div>Product Model:</div>
 
                         <div>
-                            <input type="text" pattern="[a-zA-Z0-9_\-]+" class="w-72" wire:model="product_model"
-                                id="product_model" value="{{ old('product_model') }}" />
+                            <input type="text" pattern="[a-zA-Z0-9_\-]+"
+                                class="mt-1
+                            block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                            focus:ring-indigo-500 sm:text-sm"
+                                wire:model="product_model" id="product_model" value="{{ old('product_model') }}" />
                         </div>
                         @error('product_model')
                             <div class="text-red-500 text-xs">{{ $message }}</div>
@@ -55,8 +65,12 @@
                         <div>Product Capacity:</div>
 
                         <div>
-                            <input type="text" pattern="[a-zA-Z0-9_\-]+" class="w-72" wire:model="product_capacity"
-                                id="product_capacity" value="{{ old('product_capacity') }}" />
+                            <input type="text" pattern="[a-zA-Z0-9_\-]+"
+                                class="mt-1
+                            block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                            focus:ring-indigo-500 sm:text-sm"
+                                wire:model="product_capacity" id="product_capacity"
+                                value="{{ old('product_capacity') }}" />
                         </div>
                         @error('product_capacity')
                             <div class="text-red-500 text-xs">{{ $message }}</div>
@@ -66,7 +80,10 @@
                         <div>IP Address:</div>
 
                         <div>
-                            <input type="text" pattern="^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$" class="w-72"
+                            <input type="text" pattern="^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$"
+                                class="mt-1
+                            block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                            focus:ring-indigo-500 sm:text-sm"
                                 wire:model="ip_address" id="ip_address" />
                         </div>
                         @error('ip_address')
@@ -77,7 +94,11 @@
                         <div>Product Status:</div>
 
                         <div>
-                            <input type="text" class="w-72" wire:model="product_status" />
+                            <input type="text"
+                                class="mt-1
+                            block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                            focus:ring-indigo-500 sm:text-sm"
+                                wire:model="product_status" />
                         </div>
                         @error('product_status')
                             <div class="text-red-500 text-xs">{{ $message }}</div>
@@ -87,7 +108,11 @@
                         <div>FSB Number:</div>
 
                         <div>
-                            <input class="w-72" wire:model="fsb_number" type="text" />
+                            <input
+                                class="mt-1
+                            block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500
+                            focus:ring-indigo-500 sm:text-sm"
+                                wire:model="fsb_number" type="text" />
                         </div>
                         @error('fsb_number')
                             <div class="text-red-500 text-xs">{{ $message }}</div>

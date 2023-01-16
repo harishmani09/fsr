@@ -283,277 +283,279 @@
                                     @endforeach
                                 </div>
                                 <div class="mt-2 border-t overflow-hidden shadow md:rounded-lg">
-                                    <div class="grid grid-cols-3">
-                                        <div class="border-b border-r grid-rows-3">
-                                            <div class="border-b bg-gray-50">Input Current</div>
-                                            <div class=" grid grid-cols-3">
-                                                <div>a</div>
-                                                <div>b</div>
-                                                <div>c</div>
+                                    @foreach ($battries as $battery)
+                                        <div class="grid grid-cols-3">
+                                            <div class="border-b border-r grid-rows-3">
+                                                <div class="border-b bg-gray-50">Input Current</div>
+                                                <div class=" grid grid-cols-3">
+                                                    <div>L</div>
+                                                    <div>N</div>
+                                                    <div>E</div>
+                                                </div>
+                                                <div class=" grid grid-cols-3">
+                                                    <div>{{ $battery->l_input }}</div>
+                                                    <div>{{ $battery->n_input }}</div>
+                                                    <div>{{ $battery->e_input }}</div>
+                                                </div>
                                             </div>
-                                            <div class=" grid grid-cols-3">
-                                                <div>p</div>
-                                                <div>q</div>
-                                                <div>r</div>
-                                            </div>
-                                        </div>
-                                        <div class=" border-b border-r grid-rows-3">
-                                            <div class="border-b bg-gray-50 ">Output Current</div>
-                                            <div class=" grid grid-cols-2">
-                                                <div>a</div>
-                                                <div>b</div>
+                                            <div class=" border-b border-r grid-rows-3">
+                                                <div class="border-b bg-gray-50 ">Output Current</div>
+                                                <div class=" grid grid-cols-2">
+                                                    <div>L</div>
+                                                    <div>E</div>
 
+                                                </div>
+                                                <div class=" grid grid-cols-2">
+                                                    <div>{{ $battery->l_output }}</div>
+                                                    <div>{{ $battery->e_output }}</div>
+                                                </div>
                                             </div>
-                                            <div class=" grid grid-cols-2">
-                                                <div>p</div>
-                                                <div>q</div>
-                                            </div>
-                                        </div>
-                                        <div class=" border-b  grid-rows-3">
-                                            <div class="border-b bg-gray-50">Battery Current</div>
-                                            <div class=" grid grid-cols-2">
-                                                <div>Charging Current</div>
-                                                <div>Discharge Current</div>
+                                            <div class=" border-b  grid-rows-3">
+                                                <div class="border-b bg-gray-50">Battery Current</div>
+                                                <div class=" grid grid-cols-2">
+                                                    <div>Charging Current</div>
+                                                    <div>Discharge Current</div>
 
-                                            </div>
-                                            <div class=" grid grid-cols-2">
-                                                <div>p</div>
-                                                <div>q</div>
+                                                </div>
+                                                <div class=" grid grid-cols-2">
+                                                    <div>{{ $battery->c_current }}</div>
+                                                    <div>{{ $battery->d_current }}</div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="grid grid-cols-3">
-                                        <div class=" border-b border-r grid-rows-3">
-                                            <div class="bg-gray-50">Input Voltage</div>
-                                            <div class=" border-t grid grid-cols-2">
-                                                <div>L-N</div>
-                                                <div>E-N</div>
+                                        <div class="grid grid-cols-3">
+                                            <div class=" border-b border-r grid-rows-3">
+                                                <div class="bg-gray-50">Input Voltage</div>
+                                                <div class=" border-t grid grid-cols-2">
+                                                    <div>L-N</div>
+                                                    <div>E-N</div>
 
-                                            </div>
-                                            <div class=" grid grid-cols-2">
-                                                <div>p</div>
-                                                <div>q</div>
+                                                </div>
+                                                <div class=" grid grid-cols-2">
+                                                    <div>{{ $battery->input_l_n }}</div>
+                                                    <div>{{ $battery->input_e_n }}</div>
 
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class=" border-b border-r grid-rows-3">
-                                            <div class="bg-gray-50">Output Voltage</div>
-                                            <div class="border-t grid grid-cols-2">
-                                                <div>L-N</div>
-                                                <div>E-N</div>
+                                            <div class=" border-b border-r grid-rows-3">
+                                                <div class="bg-gray-50">Output Voltage</div>
+                                                <div class="border-t grid grid-cols-2">
+                                                    <div>L-N</div>
+                                                    <div>E-N</div>
 
+                                                </div>
+                                                <div class=" grid grid-cols-2">
+                                                    <div>{{ $battery->output_l_n }}</div>
+                                                    <div>{{ $battery->output_e_n }}</div>
+                                                </div>
                                             </div>
-                                            <div class=" grid grid-cols-2">
-                                                <div>p</div>
-                                                <div>q</div>
-                                            </div>
-                                        </div>
-                                        <div class=" border-b grid-rows-3">
-                                            <div class="bg-gray-50">Battery Voltage</div>
-                                            <div class="border-t grid grid-cols-2">
-                                                <div class="border-r">Charging Voltage</div>
-                                                <div>Discharge Voltage after 3-5 Min</div>
+                                            <div class=" border-b grid-rows-3">
+                                                <div class="bg-gray-50">Battery Voltage</div>
+                                                <div class="border-t grid grid-cols-2">
+                                                    <div class="border-r">Charging Voltage</div>
+                                                    <div>Discharge Voltage after 3-5 Min</div>
 
-                                            </div>
-                                            <div class=" grid grid-cols-2">
-                                                <div class="border-r">p</div>
-                                                <div>q</div>
+                                                </div>
+                                                <div class=" grid grid-cols-2">
+                                                    <div class="border-r"> {{ $battery->charge_voltage }}</div>
+                                                    <div>{{ $battery->discharge_5 }}</div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="grid grid-cols-3">
-                                        <div class="grid-rows-3 border-r">
-                                            <div class="bg-gray-50">Frequency</div>
-                                            <div class=" border-t grid grid-cols-2">
-                                                <div class="border-r border-b">I/O</div>
-                                                <div class="border-r border-b">O/P</div>
+                                        <div class="grid grid-cols-3">
+                                            <div class="grid-rows-3 border-r">
+                                                <div class="bg-gray-50">Frequency</div>
+                                                <div class=" border-t grid grid-cols-2">
+                                                    <div class="border-r border-b">I/O</div>
+                                                    <div class="border-r border-b">O/P</div>
 
-                                            </div>
-                                            <div class=" grid grid-cols-2">
-                                                <div>50</div>
-                                                <div>50</div>
-                                            </div>
-                                        </div>
-                                        <div class="grid-rows-3 border-r">
-                                            <div class="bg-gray-50 ">
-                                                Display Information</div>
-                                            <div class="border-t grid grid-cols-2">
-                                                <div class="border-r border-b">Error Code With Description
                                                 </div>
-                                                <div class="border-r border-b">Load %</div>
-
-                                            </div>
-                                            <div class=" grid grid-cols-2">
-                                                <div>50</div>
-                                                <div>50</div>
-                                            </div>
-                                        </div>
-                                        <div class="  grid-rows-2">
-                                            <div class="bg-gray-50">Other Fault observation if any</div>
-                                            <div class="border-t">no</div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="mt-2 border-y">
-                                            <h3 class="border-b">Battery Test Report</h3>
-                                            <div class="grid grid-cols-5 border-b">
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b bg-gray-50">Battery Make:</div>
-                                                    <div>Quanta</div>
-                                                </div>
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b bg-gray-50">Battery Model:</div>
-                                                    <div>SMF</div>
-                                                </div>
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b bg-gray-50">Battery AH:</div>
-                                                    <div>26</div>
-                                                </div>
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b bg-gray-50">Nos of Bank:</div>
-                                                    <div>1</div>
-                                                </div>
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b bg-gray-50">Ambient Temperature:</div>
-                                                    <div>0</div>
+                                                <div class=" grid grid-cols-2">
+                                                    <div>{{ $battery->i_freq }}</div>
+                                                    <div>{{ $battery->o_freq }}</div>
                                                 </div>
                                             </div>
-                                            <div class="grid grid-cols-5 mt-2 border-y">
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b bg-gray-50">Installed Battery Position
-                                                        from +(VE)</div>
-                                                    <div>Quanta</div>
-                                                </div>
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b bg-gray-50">Batch Code</div>
-                                                    <div>Quanta</div>
-                                                </div>
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b bg-gray-50">Serial No</div>
-                                                    <div>Quanta</div>
-                                                </div>
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b bg-gray-50">Charging Voltage</div>
-                                                    <div>Quanta</div>
-                                                </div>
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b bg-gray-50">
-                                                        Battery
-                                                        Voltage</div>
-                                                    <div>Quanta</div>
-                                                </div>
-                                            </div>
-                                            <div class="grid grid-cols-[4fr_1.1fr_1fr_1fr_1.5fr]  mt-2 border-y">
-                                                <div class="grid-rows-2 ">
-                                                    <div class="border-b bg-gray-50">Battery Voltage during
-                                                        Discharging
+                                            <div class="grid-rows-3 border-r">
+                                                <div class="bg-gray-50 ">
+                                                    Display Information</div>
+                                                <div class="border-t grid grid-cols-2">
+                                                    <div class="border-r border-b">Error Code With Description
                                                     </div>
-                                                    <div class="border-r grid grid-cols-5">
-                                                        <div class="grid-rows-2">
-                                                            <div class="text-xs">After 2 Mins</div>
-                                                            <div>ok</div>
+                                                    <div class="border-r border-b">Load %</div>
+
+                                                </div>
+                                                <div class=" grid grid-cols-2">
+                                                    <div>{{ $battery->error_code }}</div>
+                                                    <div>{{ $battery->load_percent }}</div>
+                                                </div>
+                                            </div>
+                                            <div class="  grid-rows-2">
+                                                <div class="bg-gray-50">Other Fault observation if any</div>
+                                                <div class="border-t">{{ $battery->fault }}</div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="mt-2 border-y">
+                                                <h3 class="border-b">Battery Test Report</h3>
+                                                <div class="grid grid-cols-5 border-b">
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b bg-gray-50">Battery Make:</div>
+                                                        <div>{{ $battery->battery_make }}</div>
+                                                    </div>
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b bg-gray-50">Battery Model:</div>
+                                                        <div>{{ $battery->battery_model }}</div>
+                                                    </div>
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b bg-gray-50">Battery AH:</div>
+                                                        <div>{{ $battery->battery_ah }}</div>
+                                                    </div>
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b bg-gray-50">Nos of Bank:</div>
+                                                        <div>{{ $battery->battery_bank_no }}</div>
+                                                    </div>
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b bg-gray-50">Ambient Temperature:</div>
+                                                        <div>{{ $battery->ambient_temp }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-5 mt-2 border-y">
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b bg-gray-50">Installed Battery Position
+                                                            from +(VE)</div>
+                                                        <div>{{ $battery->battery_pos }}</div>
+                                                    </div>
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b bg-gray-50">Batch Code</div>
+                                                        <div>{{ $battery->battery_batch_code }}</div>
+                                                    </div>
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b bg-gray-50">Serial No</div>
+                                                        <div>{{ $battery->battery_serial }}</div>
+                                                    </div>
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b bg-gray-50">Charging Voltage</div>
+                                                        <div>{{ $battery->charge_voltage }}</div>
+                                                    </div>
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b bg-gray-50">
+                                                            Battery
+                                                            Voltage</div>
+                                                        <div>{{ $battery->battery_volt }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-[4fr_1.1fr_1fr_1fr_1.5fr]  mt-2 border-y">
+                                                    <div class="grid-rows-2 ">
+                                                        <div class="border-b bg-gray-50">Battery Voltage during
+                                                            Discharging
                                                         </div>
-                                                        <div class="grid-rows-2">
-                                                            <div class="text-xs">After 5 Mins</div>
-                                                            <div>ok</div>
-                                                        </div>
-                                                        <div class="grid-rows-2">
-                                                            <div class="text-xs">After 10 Mins</div>
-                                                            <div>ok</div>
-                                                        </div>
-                                                        <div class="grid-rows-2">
-                                                            <div class="text-xs">After 20 Mins</div>
-                                                            <div>ok</div>
-                                                        </div>
-                                                        <div class="grid-rows-2">
-                                                            <div class="text-xs">Battery Low/Before Cut off
+                                                        <div class="border-r grid grid-cols-5">
+                                                            <div class="grid-rows-2">
+                                                                <div class="text-xs">After 2 Mins</div>
+                                                                <div>{{ $battery->voltage_after2 }}</div>
                                                             </div>
-                                                            <div>ok</div>
+                                                            <div class="grid-rows-2">
+                                                                <div class="text-xs">After 5 Mins</div>
+                                                                <div>{{ $battery->voltage_after5 }}</div>
+                                                            </div>
+                                                            <div class="grid-rows-2">
+                                                                <div class="text-xs">After 10 Mins</div>
+                                                                <div>{{ $battery->voltage_after10 }}</div>
+                                                            </div>
+                                                            <div class="grid-rows-2">
+                                                                <div class="text-xs">After 20 Mins</div>
+                                                                <div>{{ $battery->voltage_after20 }}</div>
+                                                            </div>
+                                                            <div class="grid-rows-2">
+                                                                <div class="text-xs">Battery Low/Before Cut off
+                                                                </div>
+                                                                <div>{{ $battery->battery_cutoff }}</div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b text-md bg-gray-50">Battery Status
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b text-md bg-gray-50">Battery Status
+                                                        </div>
+                                                        <div>{{ $battery->battery_status }}</div>
                                                     </div>
-                                                    <div>ok</div>
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b bg-gray-50">Total Voltage</div>
+                                                        <div>{{ $battery->total_voltage }}</div>
+                                                    </div>
+                                                    <div class="grid-rows-2 border-r">
+                                                        <div class="border-b bg-gray-50">Total Current</div>
+                                                        <div>{{ $battery->current }}</div>
+                                                    </div>
+                                                    <div class="grid-rows-2">
+                                                        <div class="border-b text-sm bg-gray-50">Connected Load
+                                                            Details</div>
+                                                        <div>{{ $battery->connected_load }}</div>
+                                                    </div>
                                                 </div>
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b bg-gray-50">Total Voltage</div>
-                                                    <div>243</div>
-                                                </div>
-                                                <div class="grid-rows-2 border-r">
-                                                    <div class="border-b bg-gray-50">Total Current</div>
-                                                    <div>26</div>
-                                                </div>
-                                                <div class="grid-rows-2">
-                                                    <div class="border-b text-sm bg-gray-50">Connected Load
-                                                        Details</div>
-                                                    <div>Lorem ipsum dolor sit amet.</div>
-                                                </div>
-                                            </div>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <dl>
-                                            @foreach ($engineers as $engineer)
-                                                <div class="flex bg-gray-50 px-4 py-5">
-                                                    <dt class="text-sm font-medium text-gray-500">Engineer Remarks
-                                                        on failure conclusion / Root Cause</dt>
-                                                    <dd
-                                                        class="pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                        {{ $engineer->engineer_comment }}
-                                                    </dd>
-                                                </div>
-                                            @endforeach
-                                        </dl>
-                                    </div>
-                                    <div class="border-y">
-                                        <dl>
-                                            @foreach ($partsReplacement as $partReplacement)
-                                                <div class="flex bg-gray-50 px-4 py-5">
-                                                    <dt class=" pr-2 text-sm font-medium text-gray-500">
-                                                        Replaced
-                                                        Spares
-                                                        if Any</dt>
-                                                    <dd
-                                                        class="pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                        {{ $partReplacement->part_description }}
-                                                    </dd>
-                                                </div>
-                                            @endforeach
-                                        </dl>
-                                    </div>
-                                    <div class="border-y">
-                                        <dl>
-                                            @foreach ($partsFailed as $partFailed)
-                                                <div class="flex bg-gray-50 px-4 py-5">
-                                                    <dt class="pr-2 text-sm font-medium text-gray-500">Required
-                                                        Spares
-                                                        if Any</dt>
-                                                    <dd
-                                                        class=" pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                        {{ $partFailed->failed_part_desc }}
-                                                    </dd>
-                                                </div>
-                                            @endforeach
-                                        </dl>
-                                    </div>
-                                    <div class="border-y">
-                                        @foreach ($feedbacks as $feedback)
+                                        <div>
                                             <dl>
-                                                <div class="flex bg-gray-50 px-4 py-5">
-                                                    <dt class="pr-2 text-sm font-medium text-gray-500">Customer
-                                                        Remarks
-                                                    </dt>
-                                                    <dd
-                                                        class=" pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                        {{ $feedback->general_feedback }}
-                                                    </dd>
-                                                </div>
+                                                @foreach ($engineers as $engineer)
+                                                    <div class="flex bg-gray-50 px-4 py-5">
+                                                        <dt class="text-sm font-medium text-gray-500">Engineer Remarks
+                                                            on failure conclusion / Root Cause</dt>
+                                                        <dd
+                                                            class="pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                            {{ $engineer->engineer_comment }}
+                                                        </dd>
+                                                    </div>
+                                                @endforeach
                                             </dl>
-                                        @endforeach
-                                    </div>
+                                        </div>
+                                        <div class="border-y">
+                                            <dl>
+                                                @foreach ($partsReplacement as $partReplacement)
+                                                    <div class="flex bg-gray-50 px-4 py-5">
+                                                        <dt class=" pr-2 text-sm font-medium text-gray-500">
+                                                            Replaced
+                                                            Spares
+                                                            if Any</dt>
+                                                        <dd
+                                                            class="pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                            {{ $partReplacement->part_description }}
+                                                        </dd>
+                                                    </div>
+                                                @endforeach
+                                            </dl>
+                                        </div>
+                                        <div class="border-y">
+                                            <dl>
+                                                @foreach ($partsFailed as $partFailed)
+                                                    <div class="flex bg-gray-50 px-4 py-5">
+                                                        <dt class="pr-2 text-sm font-medium text-gray-500">Required
+                                                            Spares
+                                                            if Any</dt>
+                                                        <dd
+                                                            class=" pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                            {{ $partFailed->failed_part_desc }}
+                                                        </dd>
+                                                    </div>
+                                                @endforeach
+                                            </dl>
+                                        </div>
+                                        <div class="border-y">
+                                            @foreach ($feedbacks as $feedback)
+                                                <dl>
+                                                    <div class="flex bg-gray-50 px-4 py-5">
+                                                        <dt class="pr-2 text-sm font-medium text-gray-500">Customer
+                                                            Remarks
+                                                        </dt>
+                                                        <dd
+                                                            class=" pl-2 border-l-2 mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                                                            {{ $feedback->general_feedback }}
+                                                        </dd>
+                                                    </div>
+                                                </dl>
+                                            @endforeach
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
 
